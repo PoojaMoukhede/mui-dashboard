@@ -1,0 +1,21 @@
+.analysis{
+    display: grid;
+    height: 97%;
+    width: 97%;
+    border-radius: 2rem;
+    background-color: var(--glass);
+    overflow: hidden;
+    margin: auto;
+    gap: 16px;
+    grid-template-columns: 11rem auto;
+}
+.bargraph{
+    padding: 2rem;
+}
+.bargraph2{
+    margin-top: 4rem;
+}
+h4{
+    text-align: center;
+    color: white;
+}
