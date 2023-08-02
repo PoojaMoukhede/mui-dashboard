@@ -34,7 +34,7 @@ export default function Sidebar() {
           })}
           <div className="menu_item">
             <UilSignOutAlt />
-            <span></span>
+            <span>Logout</span>
           </div>
         </div>
       </div>

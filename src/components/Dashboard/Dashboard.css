@@ -1,21 +1,29 @@
-.main_dashboard{
+.main_dashboard {
     padding-left: 2rem;
     display: flex;
-    justify-content:space-evenly;
     flex-direction: column;
-/* align-items: center; */
-}
-
-@media screen and (max-width: 1200px) {
-    .main_dashboard{
-        justify-content:flex-start;
-        margin-top: 2rem;
+    overflow: hidden;
+  }
+  
+  .Card,
+  .Table {
+    flex: 1;
+  }
+  
+  .main_dashboard h1 {
+    margin: 1rem 0;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .main_dashboard {
+      justify-content: flex-start;
+      margin-top: 2rem;
     }
-}
-
-@media screen and (max-width: 768px)
-{
-    .main_dashboard{
-        align-items: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .main_dashboard {
+      align-items: center;
     }
-}
+  }
+  

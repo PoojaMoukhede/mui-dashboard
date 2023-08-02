@@ -12,12 +12,13 @@
 }
 .App {
   font-family: "Inter", sans-serif;
-  background: linear-gradient(
+  background-color: #44394d;
+  /* background: linear-gradient(
     106.37deg,
     #54475e 29.63%,
-    #492431 51.55%,
+    #54475e 51.55%,
     #54475e 90.85%
-  );
+  ); */
   height: 100vh;
   display: flex;
   align-items: center;
@@ -30,7 +31,7 @@
   width: 97%;
   border-radius: 2rem;
   background-color: var(--glass);
-  overflow: hidden;
+  overflow: auto;
   margin: auto;
   gap: 16px;
   grid-template-columns: 11rem auto 20rem;

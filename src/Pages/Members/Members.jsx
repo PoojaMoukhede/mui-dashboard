@@ -50,7 +50,7 @@ export default function Members() {
           
           <div className="Table">
           <h1 style={{color:'white'}}>Member</h1>
-          <div style={{ maxHeight: "800px", overflow: "auto"}}>
+          <div style={{ maxHeight: "800px", overflow: "scroll"}}>
           <TableContainer
           component={Paper}
           style={{ boxShadow: "0px 13px 20px 0px #80808029" , backgroundColor:'white'}}
