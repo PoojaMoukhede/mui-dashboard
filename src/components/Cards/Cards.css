@@ -4,6 +4,7 @@
 }
 .parentContainer{
     width: 100%;
+    /* height: 300px; */
 }
 @media screen and (max-width: 1200px) {
     .Cards{

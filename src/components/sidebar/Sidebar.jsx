@@ -6,7 +6,7 @@ import { SidebarData } from "../../Data/Data";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(null);
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function Sidebar() {
           {SidebarData.map((item, index) => {
             return (
               <Link
-                to={item.path} // Use the 'path' property for the Link component
+                to={item.path} 
                 className={
                   selected === index ? "menu_item active" : "menu_item"
                 }
