@@ -12,9 +12,9 @@ export default function Updates() {
               <img src={update.img} alt="" className="img" />
               <div className="noti">
                 <div style={{marginBottom:'0.5rem'}}>
-                  <span className="name">{update.name}</span>
-                  <span>{update.noti}</span> <br></br>
-                  <span>{update.time}</span>
+                  <span className="name" style={{color:'black'}}>{update.name}</span>
+                  <span style={{color:'black'}}>{update.noti}</span> <br></br>
+                  <span style={{color:'black'}}>{update.time}</span>
                 </div>
               </div>
               {/* <div>

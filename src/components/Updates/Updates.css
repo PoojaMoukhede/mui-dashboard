@@ -4,8 +4,9 @@
   border-radius: 50%;
 } */
 .Updates {
+  color: black !important;
   width: 85%;
-  background-color: white;
+  background-color: rgb(240, 248, 255);
   border-radius: 0.7rem;
   padding: 1rem;
   gap: 1rem;
@@ -28,4 +29,7 @@
     font-weight: 700;
     margin-right: 3px;
     font-size: 0.9rem;
+}
+.noti{
+  color: black !important;
 }

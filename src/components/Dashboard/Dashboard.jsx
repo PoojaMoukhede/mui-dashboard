@@ -19,7 +19,7 @@ export default function Dashboard() {
           <div
             class="card card2"
             style={{
-              background: "linear-gradient(180deg, #bb67ff 0% , #c484f3 100%)",
+              background: "linear-gradient(180deg,rgb(71, 72, 102) 0% , rgb(169, 171, 184) 100%)",
             }}
           >
             <div style={{ display: "flex" }}>
@@ -32,7 +32,7 @@ export default function Dashboard() {
           <div
             class="card"
             style={{
-              background: "linear-gradient(180deg, #ff919d 0% , #fc929d 100%)",
+              background: "linear-gradient(180deg,rgb(45, 156, 202) 0% , rgb(41, 101, 138) 100%)",
             }}
           >
             <div style={{ display: "flex" }}>
@@ -46,7 +46,7 @@ export default function Dashboard() {
             class="card"
             style={{
               background:
-                "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255, 202, 113) -46.42%)",
+                "linear-gradient(180deg,rgb(125, 198, 231) 0% , rgb(40, 63, 70) 100%)",
             }}
           >
             <div style={{ display: "flex" }}>

@@ -1,6 +1,6 @@
 .MuiTableRow-root > * {
     padding: 10px;
-    
+    /* background-color: rgb(240, 248, 255); */
   }
   
   .MuiTableRow-root.MuiTableRow-head > * {

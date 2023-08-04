@@ -1,13 +1,14 @@
 .sidebar {
+  color: white;
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
   padding-left: 1rem;
 }
 .logo img {
   width: 12rem;
-  /* margin-top:1rem */
+  /* margin-top:1rem; */
 }
 .menu {
   margin-top: 1rem;
@@ -16,6 +17,7 @@
   gap: 2rem;
 }
 .menu_item {
+  color: white;
   display: flex;
   align-items: center;
   gap: 1rem;

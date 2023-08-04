@@ -39,8 +39,14 @@ export const CardsData = [
   {
     title: "Attandance",
     color: {
-      backGround: "linear-gradient(180deg, #bb67ff 0% , #c484f3 100%)",
+      backGround: "linear-gradient(180deg,rgb(71, 72, 102) 0% , rgb(169, 171, 184) 100%)",
       boxshadow: "0px 10px 20px 0px #e0c6f5",
+    
+    },
+    dataLabels: {
+      style: {
+        colors: ['#F44336']
+      }
     },
     barValue: 92,
     value: "28",
@@ -55,8 +61,10 @@ export const CardsData = [
   {
     title: "Fuel Consumption",
     color: {
-      backGround: "linear-gradient(180deg, #ff919d 0% , #fc929d 100%)",
+      // backGround: "linear-gradient(180deg,rgb(71, 72, 102) 0% , rgb(169, 171, 184) 100%)",
+      backGround:"linear-gradient(180deg,rgb(45, 156, 202) 0% , rgb(41, 101, 138) 100%)",
       boxshadow: "0px 10px 20px 0px #fdc0c7",
+    
     },
     barValue: 80,
     value: "140",
@@ -71,9 +79,11 @@ export const CardsData = [
   {
     title: "Expenses",
     color: {
-      backGround:
-        "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255, 202, 113) -46.42%)",
+      backGround:"linear-gradient(180deg,rgb(125, 198, 231) 0% , rgb(40, 63, 70) 100%)",
+      // backGround:
+      //   "linear-gradient(rgb(110, 102, 89) -146.42%, rgb(71, 72, 102) -46.42%)",
       boxshadow: "0px 10px 20px 0px #f9d59b",
+    
     },
     barValue: 60,
     value: "4,270",
