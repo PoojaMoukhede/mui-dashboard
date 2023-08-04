@@ -19,7 +19,9 @@ export default function Car() {
               <div class="wheel-spike"></div>
               <div class="wheel-center"></div>
             </div>
-            <div class="head-light"></div>
+            <div class="head-light">
+              <div className="light"></div>
+            </div>
           </div>
           <div class="road"></div>
         </div>
