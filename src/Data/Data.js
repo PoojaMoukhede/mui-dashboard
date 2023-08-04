@@ -126,15 +126,30 @@ export const UpdatesData = [
       },
       xaxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: {
+          style: {
+            colors: '#ffffff' 
+          }
+        }
       },
-      colors: ['#ffca71']
+      yaxis: {
+        labels: {
+          style: {
+            colors: '#ffffff' 
+          }
+        }
+      },
+      colors: ['#ffca71'],
+      
     },
+    
     series: [
       {
         name: 'Expenses',
         data: [38000, 40000, 55000, 50000, 49000, 46000, 70000]
       }
     ]
+    
   }
   export const chartData2 = {
     options: {
@@ -143,8 +158,26 @@ export const UpdatesData = [
       },
       xaxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: {
+          style: {
+            colors: '#ffffff' 
+          }
+        }
       },
-      colors: ['#fd929d']
+      yaxis: {
+        labels: {
+          style: {
+            colors: '#ffffff' ,
+          }
+        }
+      },
+      colors: ['#fd929d'],
+      tooltip: {
+        style: {
+          colors: '#fd929d' // Change this to your desired tooltip font color
+        }
+      }
+      
     },
     series: [
       {

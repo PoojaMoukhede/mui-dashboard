@@ -20,3 +20,14 @@
 /* .MuiTableRow-root {
   background-color: rgb(197, 206, 238);
 } */
+.flex_with_search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+label{
+  background-color: rgb(130, 155, 236);
+  /* color: black; */
+  padding: 0.6rem;
+  border-radius: 5px;
+}

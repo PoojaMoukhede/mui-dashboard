@@ -19,3 +19,9 @@ h4{
     text-align: center;
     color: white;
 }
+.bargraph > .apexcharts-tooltip {
+    color: #000000;
+  }
+  .bargraph > .apexcharts-tooltip .apexcharts-tooltip-series-group.active {
+    background: #ffffff !important;
+  }

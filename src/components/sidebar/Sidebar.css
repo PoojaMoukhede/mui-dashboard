@@ -106,3 +106,10 @@
     height: 100%;
   }
 }
+.adminm{
+  text-align: center;
+}
+.user{
+  height: 4rem;
+  margin-top: 2rem;
+}
