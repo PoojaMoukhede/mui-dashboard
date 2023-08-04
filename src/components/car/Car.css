@@ -167,12 +167,13 @@
   
   .head-light {
     position: absolute;
-    background: #ffee00;
+    background: #fffb00;
     right: 1px;
     top: 20px;
     border-radius: 50% 15px 15px 50%;
     width: 10px;
     height: 4px;
+    filter: drop-shadow(10px 10px 200px #ff00ff) drop-shadow(-10px -10px 50px #ff00ff);
   }
   
   .road {

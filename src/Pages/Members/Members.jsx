@@ -72,7 +72,7 @@ export default function Members() {
                  key={row.name}
                  sx={{
                    "&:last-child td, &:last-child th": { border: 0 },
-                   background: index % 2 === 0 ? "rgb(235, 235, 235)" : "none"
+                   background: index % 2 === 0 ? " rgb(197, 206, 238)" : "none"
                  }}
                >
                  
