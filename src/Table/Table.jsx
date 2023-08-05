@@ -11,22 +11,6 @@ import "./Table.css";
 import { useState, useEffect } from "react";
 import dummyData from "../Pages/Analysis/MOCK_DATA.json";
 
-// function createData(name, trackingId, date, status) {
-//   return { name, trackingId, date, status };
-// }
-
-// const rows = [
-//   createData("Pooja Moukhede", 18924, "8 Hours", "Pending"),
-//   createData("Dhruva Solanki", 18908, "8 Hours", "In-office"),
-//   createData("Swati Chouhan", 18424, "8 Hours", "Pending"),
-//   createData("Mehul ", 18921, "8 Hours", "On-Site"),
-//   createData("Akash ", 18900, "8 Hours", "On-Site"),
-//   createData("Pooja Moukhede", 18924, "8 Hours", "Pending"),
-//   createData("Dhruva Solanki", 18908, "8 Hours", "In-office"),
-//   createData("Swati Chouhan", 18424, "8 Hours", "Pending"),
-//   createData("Mehul ", 18921, "8 Hours", "On-Site"),
-//   createData("Akash ", 18900, "8 Hours", "On-Site"),
-// ];
 
 const makeStyle = (status) => {
   if (status === "Pending") {
@@ -98,7 +82,7 @@ export default function BasicTable() {
       <div style={{ maxHeight: "380px", overflow: "scroll" }}>
         <TableContainer
           component={Paper}
-          style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
+          style={{ boxShadow: "0px 13px 20px 0px #80808029",backgroundColor:'rgb(240, 248, 255)' }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>

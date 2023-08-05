@@ -64,7 +64,7 @@ function ExpandedCard({ param, setExpanded }) {
         top: 0,
         left: 0,
         blur: 3,
-        color: "#000",
+        color: "white",
         opacity: 0.35,
       },
 
@@ -81,7 +81,10 @@ function ExpandedCard({ param, setExpanded }) {
       },
       tooltip: {
         x: {
-          format: "dd/MM/yy HH:mm",
+          format: "dd/MM/yy",
+        },
+        style: {
+          colors: "#000000", // Change tooltip font color to black
         },
       },
       grid: {
@@ -98,6 +101,18 @@ function ExpandedCard({ param, setExpanded }) {
           "2023-07-19",
           "2023-07-19",
         ],
+        labels: {                        // if i change this then zoom and hand mark is not visible
+          style: {
+            colors: "#FFFFFF", // Change font color for x-axis labels
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: "#FFFFFF", // Change font color for y-axis labels
+          },
+        },
       },
     },
   };

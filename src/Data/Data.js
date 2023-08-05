@@ -11,7 +11,7 @@ const img1 =
 const img2 =
   "https://www.nicepng.com/png/full/182-1829287_cammy-lin-ux-designer-circle-picture-profile-girl.png";
 const img3 =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScqGopT21-Se8CfyzkF6uHhV77biVNXiGVsA&usqp=CAU";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsF6ibnOK4cx1KOlUyJDshjWDbw759KlRWvg&usqp=CAU";
 
 export const SidebarData = [
   {
@@ -39,14 +39,14 @@ export const CardsData = [
   {
     title: "Attandance",
     color: {
-      backGround: "linear-gradient(180deg,rgb(71, 72, 102) 0% , rgb(169, 171, 184) 100%)",
+      backGround:
+        "linear-gradient(180deg,rgb(71, 72, 102) 0% , rgb(169, 171, 184) 100%)",
       boxshadow: "0px 10px 20px 0px #e0c6f5",
-    
     },
     dataLabels: {
       style: {
-        colors: ['#F44336']
-      }
+        colors: ["#F44336"],
+      },
     },
     barValue: 92,
     value: "28",
@@ -62,9 +62,9 @@ export const CardsData = [
     title: "Fuel Consumption",
     color: {
       // backGround: "linear-gradient(180deg,rgb(71, 72, 102) 0% , rgb(169, 171, 184) 100%)",
-      backGround:"linear-gradient(180deg,rgb(45, 156, 202) 0% , rgb(41, 101, 138) 100%)",
+      backGround:
+        "linear-gradient(180deg,rgb(45, 156, 202) 0% , rgb(41, 101, 138) 100%)",
       boxshadow: "0px 10px 20px 0px #fdc0c7",
-    
     },
     barValue: 80,
     value: "140",
@@ -79,11 +79,11 @@ export const CardsData = [
   {
     title: "Expenses",
     color: {
-      backGround:"linear-gradient(180deg,rgb(125, 198, 231) 0% , rgb(40, 63, 70) 100%)",
+      backGround:
+        "linear-gradient(180deg,rgb(125, 198, 231) 0% , rgb(40, 63, 70) 100%)",
       // backGround:
       //   "linear-gradient(rgb(110, 102, 89) -146.42%, rgb(71, 72, 102) -46.42%)",
       boxshadow: "0px 10px 20px 0px #f9d59b",
-    
     },
     barValue: 60,
     value: "4,270",
@@ -118,75 +118,67 @@ export const UpdatesData = [
   },
 ];
 
-
- export const chartData = {
-    options: {
-      chart: {
-        id: 'basic-bar'
-      },
-      xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        labels: {
-          style: {
-            colors: '#ffffff' 
-          }
-        }
-      },
-      yaxis: {
-        labels: {
-          style: {
-            colors: '#ffffff' 
-          }
-        }
-      },
-      colors: ['#ffca71'],
-      
+export const chartData = {
+  options: {
+    chart: {
+      id: "basic-bar",
     },
-    
-    series: [
-      {
-        name: 'Expenses',
-        data: [38000, 40000, 55000, 50000, 49000, 46000, 70000]
-      }
-    ]
-    
-  }
-  export const chartData2 = {
-    options: {
-      chart: {
-        id: 'basic-bar2'
-      },
-      xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        labels: {
-          style: {
-            colors: '#ffffff' 
-          }
-        }
-      },
-      yaxis: {
-        labels: {
-          style: {
-            colors: '#ffffff' ,
-          }
-        }
-      },
-      colors: ['#fd929d'],
-      tooltip: {
+    xaxis: {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      labels: {
         style: {
-          colors: '#fd929d' // Change this to your desired tooltip font color
-        }
-      }
-      
+          colors: "#ffffff",
+        },
+      },
     },
-    series: [
-      {
-        name: 'Fuel Consumption',
-        data: [32, 35, 48, 35, 42, 44, 55]
-      }
-    ]
-  }
+    yaxis: {
+      labels: {
+        style: {
+          colors: "#ffffff",
+        },
+      },
+    },
+    colors: ["#ffca71"],
+  },
 
-
-
-  
+  series: [
+    {
+      name: "Expenses",
+      data: [38000, 40000, 55000, 50000, 49000, 46000, 70000],
+    },
+  ],
+};
+export const chartData2 = {
+  options: {
+    chart: {
+      id: "basic-bar2",
+    },
+    xaxis: {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      labels: {
+        style: {
+          colors: "#ffffff",
+        },
+      },
+    },
+    yaxis: {
+      labels: {
+        style: {
+          colors: "#ffffff",
+        },
+      },
+    },
+    colors: ["#fd929d"],
+    tooltip: {
+      style: {
+        colors: "#fd929d", // Change this to your desired tooltip font color
+      },
+    },
+  },
+  series: [
+    {
+      name: "Fuel Consumption",
+      data: [32, 35, 48, 35, 42, 44, 55],
+    },
+  ],
+};

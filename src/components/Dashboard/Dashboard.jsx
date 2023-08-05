@@ -15,9 +15,9 @@ export default function Dashboard() {
       <div className="main_dashboard">
         <h1>Dashboard</h1>
         <Card />
-        <div class="card_compo">
+        <div className="card_compo">
           <div
-            class="card card2"
+            className="card card2"
             style={{
               background: "linear-gradient(180deg,rgb(71, 72, 102) 0% , rgb(169, 171, 184) 100%)",
             }}
@@ -30,7 +30,7 @@ export default function Dashboard() {
             <span className="capacity"><h3 className="text-center">1082 </h3><p>Kilometers</p></span>
           </div>
           <div
-            class="card"
+            className="card"
             style={{
               background: "linear-gradient(180deg,rgb(45, 156, 202) 0% , rgb(41, 101, 138) 100%)",
             }}
@@ -43,7 +43,7 @@ export default function Dashboard() {
             <span className="capacity"><h3 className="text-center">174</h3><p>Liters</p></span>
           </div>
           <div
-            class="card"
+            className="card"
             style={{
               background:
                 "linear-gradient(180deg,rgb(125, 198, 231) 0% , rgb(40, 63, 70) 100%)",
