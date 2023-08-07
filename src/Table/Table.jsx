@@ -10,6 +10,9 @@ import TextField from "@mui/material/TextField";
 import "./Table.css";
 import { useState, useEffect } from "react";
 import dummyData from "../Pages/Analysis/MOCK_DATA.json";
+import { UilSearch } from '@iconscout/react-unicons'
+
+
 
 
 const makeStyle = (status) => {
@@ -64,6 +67,7 @@ export default function BasicTable() {
         <input
           type="search"
           value={searchValue}
+          className="form-input"
           style={{
             // margin: "10px",
             marginLeft:'auto',
@@ -77,7 +81,8 @@ export default function BasicTable() {
             marginRight:'0.5rem',
           }}
           onChange={(event) => setSearchValue(event.target.value)}
-        /> <label>Search</label>
+        />
+        <span className="icon_search"><UilSearch/></span> 
       </div>
       <div style={{ maxHeight: "380px", overflow: "scroll" }}>
         <TableContainer

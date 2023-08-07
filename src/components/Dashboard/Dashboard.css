@@ -39,13 +39,12 @@
 .card {
   display: flex;
   flex: 1;
-  height: 10rem !important;
+  height: 12rem !important;
   border-radius: 0.7rem;
   color: white;
   cursor: pointer;
   position: relative;
   padding: 1rem;
-  /* border: 1px solid black; */
   margin-bottom: 1rem;
 }
 
@@ -64,8 +63,8 @@ hr {
 }
 .fuel {
   margin-left: auto;
-  height: 40px;
-  width: 60px;
+  height: 50px;
+  width: 70px;
 }
 /* .fuel:hover{
   width: 80px;
@@ -79,7 +78,7 @@ hr {
 .capacity {
   display: flex;
 }
-.text-center {
+.text-center1 {
   margin-left: 30%;
   margin-top: 2rem;
   font-size: 40px;
@@ -87,4 +86,8 @@ hr {
 .capacity >p{
   margin-top: 3rem;
   margin-left: 1rem;
+
+}
+.card_heading{
+  font-size: 1.3rem;
 }

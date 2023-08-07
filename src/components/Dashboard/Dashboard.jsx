@@ -9,6 +9,10 @@ import money from '../../Image/money-stack.png'
 import fuel from '../../Image/petrol.png'
 
 
+
+
+
+
 export default function Dashboard() {
   return (
     <>
@@ -23,11 +27,11 @@ export default function Dashboard() {
             }}
           >
             <div style={{ display: "flex" }}>
-              <h3>Total Distance Covered</h3>
+              <h3 className="card_heading ">Total Distance Covered</h3>
               <Car/>
             </div>
             <hr />
-            <span className="capacity"><h3 className="text-center">1082 </h3><p>Kilometers</p></span>
+            <span className="capacity"><h3 className="text-center1">1082 </h3><p>Kilometers</p></span>
           </div>
           <div
             className="card"
@@ -36,11 +40,11 @@ export default function Dashboard() {
             }}
           >
             <div style={{ display: "flex" }}>
-              <h3>Total Fuel Consumption</h3>
+              <h3 className="card_heading">Total Fuel Consumption</h3>
               <img src={fuel} alt="" className="fuel"/>
             </div>
-            <hr />
-            <span className="capacity"><h3 className="text-center">174</h3><p>Liters</p></span>
+           <hr />
+            <span className="capacity"><h3 className="text-center1">174</h3><p>Liters</p></span>
           </div>
           <div
             className="card"
@@ -50,11 +54,11 @@ export default function Dashboard() {
             }}
           >
             <div style={{ display: "flex" }}>
-              <h3>Total Expenses</h3>
+              <h3 className="card_heading">Total Expenses</h3>
               <img src={money} alt="" className="money"/>
             </div>
             <hr />
-            <span className="capacity"><h3 className="text-center">1,78072</h3><p><UilRupeeSign/></p></span>
+            <span className="capacity"><h3 className="text-center1">1,78072</h3><p><UilRupeeSign/></p></span>
           </div>
         </div>
         <Table />

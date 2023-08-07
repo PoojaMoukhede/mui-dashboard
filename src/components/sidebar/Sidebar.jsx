@@ -22,7 +22,7 @@ export default function Sidebar() {
           {/* <UilAirplay/> */}
 
         </div>
-          <h3>Hello Admin</h3>
+          <h3 className="admin_name">Hello Admin</h3>
           
         </div>
         <div className="menu">
@@ -35,7 +35,7 @@ export default function Sidebar() {
                 }
                 key={index}
                 onClick={() => setSelected(index)}
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "white" }}
               >
                 <item.icon />
                 <span>{item.heading}</span>

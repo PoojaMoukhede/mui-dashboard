@@ -13,14 +13,23 @@ import Paper from "@mui/material/Paper";
 import "../../Table/Table.css";
 import { useState, useEffect } from "react";
 import dummyData from "../Analysis/MOCK_DATA.json";
+import AddMember from './Add/AddMember'
+import { UilSearch } from '@iconscout/react-unicons'
+
+
 
 export default function Members() {
   const [rows, setRows] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setRows(dummyData);
   }, []);
+
+  const handleAddMember = (newEmployee) => {
+    setRows((prevRows) => [...prevRows, newEmployee]);
+  };
 
   const filteredRows = rows.filter((row) =>
     Object.values(row).some((value) =>
@@ -35,6 +44,7 @@ export default function Members() {
         <div className="main_dashboard2">
           <div className="Table">
             <div className="flex_with_search">
+            <button onClick={() => setIsModalOpen(true)} className="add_employee">Add Employee</button>
               <h1 style={{ color: "white",marginLeft:'40%' }}>Member</h1>
               {/* <TextField
                   // label="Search"
@@ -62,7 +72,13 @@ export default function Members() {
                 }}
                 onChange={(event) => setSearchValue(event.target.value)}
               />
-              <label>Search</label>
+               <span className="icon_search"><UilSearch/></span>
+              
+        <AddMember
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onAdd={handleAddMember}
+        />
             </div>
             <div style={{ maxHeight: "800px", overflow: "scroll" }}>
               <div>
@@ -80,6 +96,11 @@ export default function Members() {
                         <TableCell>Name</TableCell>
                         <TableCell align="left">Email</TableCell>
                         <TableCell align="left">Contact Number</TableCell>
+                        <TableCell align="left">Department</TableCell>
+                        <TableCell align="left">City</TableCell>
+                        <TableCell align="left">State</TableCell>
+                        <TableCell align="left">DOB</TableCell>
+                        <TableCell>Joining Date</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -93,11 +114,14 @@ export default function Members() {
                           }}
                         >
                           <TableCell align="left">{row.id}</TableCell>
-                          <TableCell component="th" scope="row">
-                            {row.name}
-                          </TableCell>
+                          <TableCell component="th" scope="row"> {row.name}</TableCell>
                           <TableCell align="left">{row.email}</TableCell>
                           <TableCell align="left">{row.contact_no}</TableCell>
+                          <TableCell align="left">{row.department}</TableCell>
+                          <TableCell align="left">{row.city}</TableCell>
+                          <TableCell align="left">{row.state}</TableCell>
+                          <TableCell align="left">{row.DOB}</TableCell>
+                          <TableCell align="left">{row.joining_date}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>

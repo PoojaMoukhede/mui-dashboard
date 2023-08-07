@@ -2,7 +2,7 @@
   display: grid;
   height: 97%;
   width: 97%;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   background-color: var(--glass);
   overflow: hidden;
   margin: auto;
@@ -25,9 +25,23 @@
   align-items: center;
   justify-content: center;
 }
-label{
+.label{
   background-color: #0077cc;
   /* color: black; */
   padding: 0.6rem;
+  border-radius: 5px;
+}
+.add_employee{
+  background-color: #0077cc;
+  padding: 0.6rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  font-weight: 500;
+  /* margin-left: 0.6rem; */
+}
+.icon_search{
+  background-color: rgb(17, 127, 223);
+  padding: 0.5rem;
   border-radius: 5px;
 }

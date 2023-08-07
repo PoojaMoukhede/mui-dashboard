@@ -17,7 +17,7 @@ export const SidebarData = [
   {
     icon: UilEstate,
     heading: "Dashboard",
-    path: "/",
+    path: "/dashboard",
   },
   {
     icon: UilClipboardAlt,
@@ -101,19 +101,19 @@ export const UpdatesData = [
   {
     img: img1,
     name: "Pooja Moukhede",
-    noti: "has completed visit.",
+    noti: "has birthday today wish her.",
     time: "25 seconds ago",
   },
   {
     img: img2,
     name: "Dhruva Solanki",
-    noti: "On the Way",
+    noti: "joined software department today",
     time: "30 minutes ago",
   },
   {
     img: img3,
     name: "Swati Chouhan",
-    noti: "has completed visit.",
+    noti: "has 2nd year of work anniversary.",
     time: "2 hours ago",
   },
 ];
