@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext, useEffect } from "react";
+import React, { useContext, useState, createContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const APIContext = createContext();
@@ -8,7 +8,7 @@ export function APIContextProvider({ children }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [userEmail, setUserEmail] = useState("");
-  const [employeeData , setEmployeedata]= useState("");
+  const [employeeData , setEmployeedata]= useState([]);
 
 
   //Takes email password confirm_password and stores data
@@ -18,12 +18,6 @@ export function APIContextProvider({ children }) {
   const loginUrl = `${URL}login`;
   const addEmployeeURL = `${URL}add`;
   const getEmployee = `${URL}get`;
-
-  //   const config = {
-  //     headers: {
-  //       token: localStorage.getItem("token"),
-  //     },
-  //   };
 
   //post user
   const signUpUser = (userData) => {
@@ -85,33 +79,26 @@ export function APIContextProvider({ children }) {
       });
   };
 
-const getEmployeeData = async(EmployeeData)=>{
+const getEmployeeData = async()=>{
+  axios
+    .get(getEmployee, {EmployeeData:'EmployeeData'})
+    .then((res) => {
+      // console.log(res)
+      // employeeData.push(res.data)
+      console.log(res)
+    })
   
-  // try {
-    // axios
-    //   .get(getEmployee, EmployeeData)
-    //   .then((res) => {
-    //     // const data = res.data[0]
-    //     // console.log(res.data[0]);
-    //     return res.data
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    try {
-      const response = await axios.get(getEmployee);
-      return response.data; // Return the entire response data
-    } catch (error) {
-      console.error("Error fetching employee data:", error);
-      throw error;
-    }
-  // } catch (error) {
-  //   window.alert(error.message);
-  // }
-  // console.log('employee', EmployeeData)
 }
 
-
+const fetchData = async () => {
+  try {
+    const data = await getEmployeeData();
+    setEmployeedata(data); 
+    console.log("data-------" , data)
+  } catch (error) {
+    console.error("Error fetching employee data:", error);
+  }
+};
 
 
   return (
@@ -124,7 +111,7 @@ const getEmployeeData = async(EmployeeData)=>{
         userEmail,
         onFormSubmit,
         getEmployeeData,
-
+        fetchData,
       }}
     >
       {children}

@@ -7,12 +7,7 @@ import Button from "@mui/material/Button";
 import "./AddMember.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-// import AdapterDateFns from '@mui/lab/AdapterDateFns';
-// import LocalizationProvider from '@mui/lab/LocalizationProvider';
-// import DatePicker from '@mui/lab/DatePicker';
-import { useAPI } from '../../../Context'
-
-
+import { useAPI } from '../../../Context';
 
 
 
@@ -56,7 +51,6 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
   const [selectedState, setSelectedState] = useState('');
   const [selectedcity, setSelectedcity] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
-
   
   const statesData = {
     "AndraPradesh" :["Anantapur","Chittoor","East Godai","Guntur","Kadapa","Krishna","Kurnool","Prakasam","Nellore","Srikakulam","Visakhapatnam","Vizianagaram","West Godai"],
@@ -133,10 +127,10 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
     setSelectedDate(date);
   };
 
-
-  const { onFormSubmit} = useAPI();
+  const { onFormSubmit,fetchData} = useAPI();
   const onFormSubmit1 = () => {
     onFormSubmit(newEmployee.id,newEmployee);
+    fetchData()
     console.log(newEmployee)
   };
 
@@ -243,35 +237,17 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
               </div>
 
             </div>
-            <div className="grid-row">
-              <div className="grid-item mt-1">
-                <TextField
-                  name="Emp_DOB"
-                  label="date Of Birth"
-                  value={newEmployee.Emp_DOB}
-                  onChange={handleInputChange}
-                  fullWidth
-                  margin="normal"
-                />
-                {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DatePicker
-                    label="Select Date"
-                    value={selectedDate}
-                    onChange={handleDateChange}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </LocalizationProvider> */}
-        
+            <div className="grid-row mt-3">
+              <div className="grid-item ">
+                <input type="date" placeholder="DD/MM/YYYY" name="Emp_DOB"
+                 value={newEmployee.Emp_DOB} onChange={handleInputChange}
+                style={{width:'23.25rem',height:'3.3rem',marginTop:'5px',maxWidth:'100%'}}/>
               </div>
+
               <div className="grid-item">
-                <TextField
-                  name="Emp_joining_date"
-                  label="Joining Date"
-                  value={newEmployee.Emp_joining_date}
-                  onChange={handleInputChange}
-                  fullWidth
-                  margin="normal"
-                />
+                 <input type="date" placeholder="DD/MM/YYYY" name="Emp_joining_date"
+                  value={newEmployee.Emp_joining_date} onChange={handleInputChange}
+                 style={{width:'23.25rem',height:'3.3rem',marginTop:'5px',maxWidth:'100%'}}/>
               </div>
             </div>
 

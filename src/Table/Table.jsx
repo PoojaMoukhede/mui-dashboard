@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import dummyData from "../Pages/Analysis/MOCK_DATA.json";
 import { UilSearch } from '@iconscout/react-unicons'
 // import { useAPI } from '../Context'
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -38,7 +39,7 @@ const makeStyle = (status) => {
 export default function BasicTable() {
   const [rows, setRows] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
     setRows(dummyData);
   }, []);
@@ -117,7 +118,7 @@ export default function BasicTable() {
                       {row.status}
                     </span>
                   </TableCell>
-                  <TableCell align="left" className="Details">
+                  <TableCell align="left" className="Details" onClick={()=>navigate('/details')}>
                     Details
                   </TableCell>
                 </TableRow>

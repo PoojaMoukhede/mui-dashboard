@@ -4,7 +4,9 @@ import {
   UilUsersAlt,
   UilChart,
   UilMoneyWithdrawal,
+  UilHeadphonesAlt
 } from "@iconscout/react-unicons";
+
 
 const img1 =
   "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww&w=1000&q=80";
@@ -33,6 +35,11 @@ export const SidebarData = [
     icon: UilChart,
     heading: "Analysis",
     path: "/analysis",
+  },
+  {
+    icon: UilHeadphonesAlt,
+    heading: "Complaint",
+    path: "/complaint",
   },
 ];
 export const CardsData = [
