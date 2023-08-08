@@ -11,6 +11,7 @@ import "./Table.css";
 import { useState, useEffect } from "react";
 import dummyData from "../Pages/Analysis/MOCK_DATA.json";
 import { UilSearch } from '@iconscout/react-unicons'
+// import { useAPI } from '../Context'
 
 
 
@@ -94,9 +95,9 @@ export default function BasicTable() {
               <TableRow>
                 <TableCell align="left">Employee ID</TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell align="left"></TableCell>
+                <TableCell align="left">Hours</TableCell>
                 <TableCell align="left">Status</TableCell>
-                <TableCell align="left"></TableCell>
+                <TableCell align="left">Details</TableCell>
               </TableRow>
             </TableHead>
             <TableBody style={{ color: "white" }}>

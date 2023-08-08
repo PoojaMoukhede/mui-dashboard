@@ -18,17 +18,17 @@ import { useAPI } from '../../../Context'
 
 const AddEmployeeModal = ({ open, onClose, onAdd }) => {
   const [newEmployee, setNewEmployee] = useState({
-    id: "",
-    name: "",
-    email: "",
-    contact_no: "",
-    department: "",
-    city: "",
-    state: "",
-    DOB: "",
-    joining_date: "",
+    // id: Date.now(),
+    Emp_name: "",
+    Emp_email: "",
+    Emp_contact_No: "",
+    Emp_department: "",
+    Emp_city: "",
+    Emp_state: "",
+    Emp_DOB: "",
+    Emp_joining_date: "",
   });
-
+  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNewEmployee((prevEmployee) => ({
@@ -37,21 +37,21 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
     }));
   };
 
-  const handleAddClick = () => {
-    onAdd(newEmployee);
-    setNewEmployee({
-      id: "",
-      name: "",
-      email: "",
-      contact_no: "",
-      department: "",
-      city: "",
-      state: "",
-      DOB: "",
-      joining_date: "",
-    });
-    onClose();
-  };
+  // const handleAddClick = () => {
+  //   onAdd(newEmployee);
+  //   setNewEmployee({
+  //     id: "",
+  //     name: "",
+  //     email: "",
+  //     contact_no: "",
+  //     department: "",
+  //     city: "",
+  //     state: "",
+  //     DOB: "",
+  //     joining_date: "",
+  //   });
+  //   onClose();
+  // };
 
   const [selectedState, setSelectedState] = useState('');
   const [selectedcity, setSelectedcity] = useState('');
@@ -106,16 +106,26 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
     const stateValue = event.target.value;
     setSelectedState(stateValue);
     setSelectedcity('');
+
+    setNewEmployee((prevEmployee) => ({
+      ...prevEmployee,
+      Emp_state:stateValue
+    }));
   };
 
   const handlecityChange = (event) => {
     const cityValue = event.target.value;
     setSelectedcity(cityValue);
+
+    setNewEmployee((prevEmployee) => ({
+      ...prevEmployee,
+      Emp_city:cityValue
+    }));
   };
 
-  const cityOptions = selectedState ? statesData[selectedState].map((city) => (
-    <MenuItem key={city} value={city}>
-      {city}
+  const cityOptions = selectedState ? statesData[selectedState].map((Emp_city) => (
+    <MenuItem key={Emp_city} value={Emp_city}>
+      {Emp_city}
     </MenuItem>
   )) : null;
 
@@ -124,9 +134,10 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
   };
 
 
-  const { onFormSubmit } = useAPI();
+  const { onFormSubmit} = useAPI();
   const onFormSubmit1 = () => {
-    onFormSubmit(newEmployee);
+    onFormSubmit(newEmployee.id,newEmployee);
+    console.log(newEmployee)
   };
 
 
@@ -149,9 +160,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
             <div className="grid-row">
               <div className="grid-item">
                 <TextField
-                  name="name"
+                  name="Emp_name"
                   label="Employee Name"
-                  value={newEmployee.name}
+                  value={newEmployee.Emp_name}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -161,19 +172,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
             <div className="grid-row">
               <div className="grid-item">
                 <TextField
-                  name="id"
-                  label="Employee ID"
-                  value={newEmployee.id}
-                  onChange={handleInputChange}
-                  fullWidth
-                  margin="normal"
-                />
-              </div>
-              <div className="grid-item">
-                <TextField
-                  name="email"
+                  name="Emp_email"
                   label="Employee E-mail"
-                  value={newEmployee.email}
+                  value={newEmployee.Emp_email}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -183,9 +184,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
             <div className="grid-row">
               <div className="grid-item">
                 <TextField
-                  name="contact_no"
+                  name="Emp_contact_No"
                   label="Contact Number"
-                  value={newEmployee.contact_no}
+                  value={newEmployee.Emp_contact_No}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -193,9 +194,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
               </div>
               <div className="grid-item">
                 <TextField
-                  name="department"
+                  name="Emp_department"
                   label="Department"
-                  value={newEmployee.department}
+                  value={newEmployee.Emp_department}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -206,12 +207,12 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
              
               <div className="grid-item">
                 <Select 
-                  name="state"
+                  name="Emp_state"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   // value={newEmployee.state}
                   label="State"
-                  style={{ color: "black" }}
+                  style={{ color: "black" , marginTop:'15px'}}
                   fullWidth
                   value={selectedState} 
                   onChange={handleStateChange}
@@ -225,12 +226,12 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
               </div>
               <div className="grid-item">
                 <Select                     // facing problem in city select
-                  name="city"
+                  name="Emp_city"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   // value={newEmployee.city}
                   label="City"
-                  style={{ color: "black" }}
+                  style={{ color: "black" , marginTop:'15px' }}
                   fullWidth
                   // onChange={handleInputChange}
                   value={selectedcity} 
@@ -243,11 +244,11 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
 
             </div>
             <div className="grid-row">
-              <div className="grid-item">
+              <div className="grid-item mt-1">
                 <TextField
-                  name="DOB"
+                  name="Emp_DOB"
                   label="date Of Birth"
-                  value={newEmployee.DOB}
+                  value={newEmployee.Emp_DOB}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -264,9 +265,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
               </div>
               <div className="grid-item">
                 <TextField
-                  name="joining_date"
+                  name="Emp_joining_date"
                   label="Joining Date"
-                  value={newEmployee.joining_date}
+                  value={newEmployee.Emp_joining_date}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -278,8 +279,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
               variant="contained"
               color="primary"
               onClick={onFormSubmit1}
+              // onAdd={newEmployee}
             >
-              Add Employee
+           Add Employee
             </Button>
           </div>
         </div>

@@ -8,21 +8,22 @@ export function APIContextProvider({ children }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [userEmail, setUserEmail] = useState("");
+  const [employeeData , setEmployeedata]= useState("");
+
 
   //Takes email password confirm_password and stores data
   const SignUpUrl = `${URL}register`;
 
   // TAKES email Password gives Token
   const loginUrl = `${URL}login`;
-  const addEmployee = `${URL}add`;
+  const addEmployeeURL = `${URL}add`;
   const getEmployee = `${URL}get`;
 
-
-//   const config = {
-//     headers: {
-//       token: localStorage.getItem("token"),
-//     },
-//   };
+  //   const config = {
+  //     headers: {
+  //       token: localStorage.getItem("token"),
+  //     },
+  //   };
 
   //post user
   const signUpUser = (userData) => {
@@ -60,43 +61,59 @@ export function APIContextProvider({ children }) {
       .catch((err) => console.log(err));
   };
 
-
-  const onFormSubmit = (id) => {
+  const onFormSubmit = (id, data) => {
     axios
-        .post(addEmployee, addEmployee)
-        .then((res) => {
-            const Emp_name = res.data.Emp_name;
-            const Emp_email = res.data.Emp_email;
-            const Emp_contact_No = res.data.Emp_contact_No;
-            const Emp_department = res.data.Emp_department;
-            const Emp_city = res.data.Emp_city;
-            const Emp_state = res.data.Emp_state;
-            const Emp_DOB = res.data.Emp_DOB;
-            const Emp_joining_date = res.data.Emp_joining_date;
+      .post(addEmployeeURL, data)
+      .then((res) => {
+        const {
+          Emp_name,
+          Emp_email,
+          Emp_contact_No,
+          Emp_department,
+          Emp_city,
+          Emp_state,
+          Emp_DOB,
+          Emp_joining_date,
+        } = res.data;
 
-            if (Emp_name && Emp_email && Emp_contact_No && Emp_department && Emp_city && Emp_state && Emp_DOB && Emp_joining_date) {
+        console.log(Emp_name,Emp_email,Emp_contact_No,Emp_department, Emp_city, Emp_state,Emp_DOB,Emp_joining_date );
+        setEmployeedata(data)
+      
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
-                let detailsObject = {
-                    id: Date.now(),
-                    Emp_name,
-                    Emp_email,
-                    Emp_contact_No,
-                    Emp_department,
-                    Emp_city,
-                    Emp_state,
-                    Emp_DOB,
-                    Emp_joining_date,
-                };
-
-                // Perform further actions with detailsObject if needed
-            }
-        })
-        .catch((error) => {
-            // Handle error here
-            console.error('Error:', error);
-        });
-};
+const getEmployeeData = async(EmployeeData)=>{
   
+  // try {
+    // axios
+    //   .get(getEmployee, EmployeeData)
+    //   .then((res) => {
+    //     // const data = res.data[0]
+    //     // console.log(res.data[0]);
+    //     return res.data
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    try {
+      const response = await axios.get(getEmployee);
+      return response.data; // Return the entire response data
+    } catch (error) {
+      console.error("Error fetching employee data:", error);
+      throw error;
+    }
+  // } catch (error) {
+  //   window.alert(error.message);
+  // }
+  // console.log('employee', EmployeeData)
+}
+
+
+
+
   return (
     <APIContext.Provider
       value={{
@@ -106,13 +123,14 @@ export function APIContextProvider({ children }) {
         loginUser,
         userEmail,
         onFormSubmit,
+        getEmployeeData,
+
       }}
     >
       {children}
     </APIContext.Provider>
   );
 }
-
 
 export function useAPI() {
   const context = useContext(APIContext);

@@ -5,10 +5,12 @@ import { UilSignOutAlt } from "@iconscout/react-unicons";
 import { SidebarData } from "../../Data/Data";
 import { Link } from "react-router-dom";
 import user from '../../Image/user (3).png'
+import { useNavigate } from "react-router-dom";
 // import { UilAirplay } from '@iconscout/react-unicons'
 
 export default function Sidebar() {
   const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -42,7 +44,11 @@ export default function Sidebar() {
               </Link>
             );
           })}
-          <div className="menu_item">
+          <div className="menu_item"  onClick={() => {
+            navigate("/");
+            localStorage.clear("token");
+            window.location.reload();
+          }}>
             <UilSignOutAlt />
             <span>Logout</span>
           </div>
