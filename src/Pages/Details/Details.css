@@ -1,0 +1,23 @@
+.Dcard {
+  margin-left: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgb(71, 72, 102) 0%,
+    rgb(169, 171, 184) 100%
+  );
+}
+#flex {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+.item {
+  width: 23.5rem;
+  height: 30vh;
+  background-color: aliceblue;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+}

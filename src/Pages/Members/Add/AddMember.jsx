@@ -127,10 +127,12 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
     setSelectedDate(date);
   };
 
-  const { onFormSubmit,fetchData} = useAPI();
-  const onFormSubmit1 = () => {
+  const { onFormSubmit} = useAPI();
+  const onFormSubmit1 = (e) => {
     onFormSubmit(newEmployee.id,newEmployee);
-    fetchData()
+    // fetchData()
+    // e.preventDefault()
+    window.location.reload()
     console.log(newEmployee)
   };
 

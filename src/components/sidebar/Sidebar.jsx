@@ -6,11 +6,33 @@ import { SidebarData } from "../../Data/Data";
 import { Link } from "react-router-dom";
 import user from '../../Image/user (3).png'
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import axios from 'axios'
 // import { UilAirplay } from '@iconscout/react-unicons'
 
 export default function Sidebar() {
   const [selected, setSelected] = useState(null);
+  const [admin,setAdmin] = useState('')
   const navigate = useNavigate();
+
+
+   function handleAdmin(id){
+    axios.get(`http://localhost:8080/get/${id}`)
+    .then(response => {
+      setAdmin(response.data);
+      // console.log(response)
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+   }
+
+  useEffect(() => {
+    const ID = '64d37318603e889b32e3e2e9' // for checking only
+    handleAdmin(ID)
+  }, []);
+
+
 
   return (
     <>
@@ -24,7 +46,12 @@ export default function Sidebar() {
           {/* <UilAirplay/> */}
 
         </div>
-          <h3 className="admin_name">Hello Admin</h3>
+        {admin ? (
+        <p>Hello, {admin.name}</p>
+       ) : (
+        <p>Loading...</p>
+      )} 
+          {/* <h3 className="admin_name">Hello Admin</h3> */}
           
         </div>
         <div className="menu">

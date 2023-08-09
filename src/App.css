@@ -5,7 +5,6 @@
   --gray: #788097;
   --purple: linear-gradient(180deg, #bb67ff 0%, #c484f3 100%);
   --pink: #ff919d;
-  /* --glass: #44394d; */
   --boxShadow: 0px 19px 60px rgb(0, 0, 0, 0.08);
   --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
   --activeItem: #f799a354;
@@ -13,28 +12,20 @@
 .App {
   font-family: "Inter", sans-serif;
   background-color: rgb(35, 38, 69);
-  /* background: linear-gradient(
-    106.37deg,
-    #54475e 29.63%,
-    #54475e 51.55%,
-    #54475e 90.85%
-  ); */
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  overflow: hidden;
+  
 }
 
 .glass {
   color: white;
   display: grid;
-  /* height: 97%; */
   width: 97%;
-  /* border-radius: 2rem; */
-  /* background-color: var(--glass); */
   overflow: auto;
-  /* margin: auto; */
   gap: 16px;
   grid-template-columns: 11rem auto 20rem;
 }
@@ -48,12 +39,10 @@
 @media screen and (max-width: 768px) {
   .glass {
     grid-template-columns: 1fr;
+    overflow-y: scroll;
   }
 }
 h1{
   color: white;
   text-align: center;
 }
-/* *{
-  color: white;
-} */

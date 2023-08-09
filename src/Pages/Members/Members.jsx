@@ -10,30 +10,40 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "../../Table/Table.css";
 import { useState, useEffect } from "react";
-// import dummyData from "../Analysis/MOCK_DATA.json";
 import AddMember from "./Add/AddMember";
 import { UilSearch } from "@iconscout/react-unicons";
-import { useAPI } from "../../Context";
+import axios from 'axios'
 
 export default function Members() {
   const [rows, setRows] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { fetchData } = useAPI();
+
 
   useEffect(() => {
-    fetchData();
-  });
+    axios.get('http://localhost:8080/get')
+    .then(response => {
+      setRows(response.data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }, []);
+  
 
   const handleAddMember = (newEmployee) => {
-    setRows((prevRows) => [...prevRows, newEmployee]);
+    setRows((prevRows) => [...prevRows, newEmployee]);    
   };
 
+
+
+// console.log("rows",rows)
   const filteredRows = rows.filter((row) =>
     Object.values(row).some((value) =>
       value.toString().toLowerCase().includes(searchValue.toLowerCase())
     )
   );
+  // console.log(filteredRows)
 
   return (
     <div className="App">
@@ -98,34 +108,37 @@ export default function Members() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {filteredRows.map((row, index) => (
-                        <TableRow
-                          key={row._id}
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                            background:
-                              index % 2 === 0 ? "rgb(197, 206, 238)" : "none",
-                          }}
-                        >
-                          <TableCell align="left">{row._id}</TableCell>
-                          <TableCell component="th" scope="row">
-                            {row.Emp_name}
-                          </TableCell>
-                          <TableCell align="left">{row.Emp_email}</TableCell>
-                          <TableCell align="left">
-                            {row.Emp_contact_No}
-                          </TableCell>
-                          <TableCell align="left">
-                            {row.Emp_department}
-                          </TableCell>
-                          <TableCell align="left">{row.Emp_city}</TableCell>
-                          <TableCell align="left">{row.Emp_state}</TableCell>
-                          <TableCell align="left">{row.Emp_DOB}</TableCell>
-                          <TableCell align="left">
-                            {row.Emp_joining_date}
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                      {filteredRows.map((row, index) => {
+                        // console.log("Mapping row:", row);
+                        return (
+                          <TableRow
+                            key={row._id}
+                            sx={{
+                              "&:last-child td, &:last-child th": { border: 0 },
+                              background:
+                                index % 2 === 0 ? "rgb(197, 206, 238)" : "none",
+                            }}
+                          >
+                            <TableCell align="left">{row._id}</TableCell>
+                            <TableCell component="th" scope="row">
+                              {row.Emp_name}
+                            </TableCell>
+                            <TableCell align="left">{row.Emp_email}</TableCell>
+                            <TableCell align="left">
+                              {row.Emp_contact_No}
+                            </TableCell>
+                            <TableCell align="left">
+                              {row.Emp_department}
+                            </TableCell>
+                            <TableCell align="left">{row.Emp_city}</TableCell>
+                            <TableCell align="left">{row.Emp_state}</TableCell>
+                            <TableCell align="left">{row.Emp_DOB}</TableCell>
+                            <TableCell align="left">
+                              {row.Emp_joining_date}
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
                     </TableBody>
                   </Table>
                 </TableContainer>

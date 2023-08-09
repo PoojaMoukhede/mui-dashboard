@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/members" element={<Members />} />
           <Route exact path="/analysis" element={<Analysis />} />
           <Route exact path="/complaint" element={<Complaint/>}/>
-          <Route exact path="/details" element={<Details/>}/>
+          <Route exact path="/details/:id" element={<Details/>}/>
         </Routes>
         </APIContextProvider>
       </BrowserRouter>

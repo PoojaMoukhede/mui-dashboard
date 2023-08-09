@@ -7,7 +7,7 @@ a {
     display: inline-block;
     display: flex;
     align-items: center;
-    background-color: #1A4A60;
+
 }
 .form-right i {
     font-size: 100px;
@@ -17,4 +17,12 @@ a {
 }
 .bg_image_login{
     background-color: #3b5e6e;
+}
+.login_container{
+    background-color: #1A4A60;
+}
+.m_logo{
+    margin-top:2%!important ;
+    margin-left: 2%;
+    position: fixed;
 }

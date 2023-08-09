@@ -16,8 +16,9 @@ export function APIContextProvider({ children }) {
 
   // TAKES email Password gives Token
   const loginUrl = `${URL}login`;
+
+  //add new employees
   const addEmployeeURL = `${URL}add`;
-  const getEmployee = `${URL}get`;
 
   //post user
   const signUpUser = (userData) => {
@@ -26,7 +27,7 @@ export function APIContextProvider({ children }) {
       axios
         .post(SignUpUrl, userData)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           navigate("/");
         })
         .catch((err) => {
@@ -52,9 +53,14 @@ export function APIContextProvider({ children }) {
         document.location.reload();
         setUserEmail(loginData.email);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        window.alert(`Login Failed`);
+      }
+      );
   };
 
+  
   const onFormSubmit = (id, data) => {
     axios
       .post(addEmployeeURL, data)
@@ -79,27 +85,6 @@ export function APIContextProvider({ children }) {
       });
   };
 
-const getEmployeeData = async()=>{
-  axios
-    .get(getEmployee, {EmployeeData:'EmployeeData'})
-    .then((res) => {
-      // console.log(res)
-      // employeeData.push(res.data)
-      console.log(res)
-    })
-  
-}
-
-const fetchData = async () => {
-  try {
-    const data = await getEmployeeData();
-    setEmployeedata(data); 
-    console.log("data-------" , data)
-  } catch (error) {
-    console.error("Error fetching employee data:", error);
-  }
-};
-
 
   return (
     <APIContext.Provider
@@ -110,8 +95,6 @@ const fetchData = async () => {
         loginUser,
         userEmail,
         onFormSubmit,
-        getEmployeeData,
-        fetchData,
       }}
     >
       {children}

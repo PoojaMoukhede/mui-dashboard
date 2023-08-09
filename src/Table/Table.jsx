@@ -118,7 +118,7 @@ export default function BasicTable() {
                       {row.status}
                     </span>
                   </TableCell>
-                  <TableCell align="left" className="Details" onClick={()=>navigate('/details')}>
+                  <TableCell align="left" className="Details" onClick={()=>navigate('/details/:id')}>
                     Details
                   </TableCell>
                 </TableRow>
