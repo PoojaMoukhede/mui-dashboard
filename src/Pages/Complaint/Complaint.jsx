@@ -4,6 +4,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Stack from "@mui/joy/Stack";
 import Item from "@mui/joy/ListItem";
 import { UilCalender } from "@iconscout/react-unicons";
+import {Link} from 'react-router-dom'
 
 export default function Complaint() {
   return (
@@ -12,7 +13,14 @@ export default function Complaint() {
         <div className="glass2">
           <Sidebar />
           <div className="main_dashboard2">
-            <h1>Complaint</h1>
+            <div className="mt-2">
+              <h1>Complaint</h1>
+              <Link to='/contactManager'>
+              <button className="btn btn-info float-end mb-2">
+                View Contact
+              </button>
+              </Link>
+            </div>
             <Stack spacing={2}>
               <Item className="item_card d-flex flex-row">
                 <div className="complaint_left">
@@ -69,8 +77,8 @@ export default function Complaint() {
                 <div className="complaint_right">
                   <p className="complaint">
                     {" "}
-                    Hello Sir/Ma'am,<br />
-                    I am Pooja Moukhede Employee code-1477 from Ahmedabad{" "}
+                    Hello Sir/Ma'am,
+                    <br />I am Pooja Moukhede Employee code-1477 from Ahmedabad{" "}
                     I am trying to reach Mr Ram but he is not answering my phone
                     since morning could you please connect? <br />
                     Thankyou

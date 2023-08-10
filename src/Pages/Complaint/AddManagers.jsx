@@ -4,56 +4,31 @@ import Backdrop from "@mui/material/Backdrop";
 import Fade from "@mui/material/Fade";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import "./AddMember.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { useAPI } from '../../../Context';
+import { useAPI } from '../../Context';
 
 
 
+const AddManagers = ({ open, onClose }) => {
 
-const AddEmployeeModal = ({ open, onClose, onAdd }) => {
-  const [newEmployee, setNewEmployee] = useState({
-    // id: Date.now(),
-    Emp_name: "",
-    Emp_email: "",
-    Emp_contact_No: "",
-    Emp_department: "",
-    Emp_city: "",
-    Emp_state: "",
-    Emp_DOB: "",
-    Emp_joining_date: "",
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedcity, setSelectedcity] = useState('');
+  const [newManager, setnewManager] = useState({
+    name: "",
+    email: "",
+    contact_no: "",
+    city: "",
+    state: "",
   });
   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setNewEmployee((prevEmployee) => ({
+    setnewManager((prevEmployee) => ({
       ...prevEmployee,
       [name]: value,
     }));
   };
-
-  // const handleAddClick = () => {
-  //   onAdd(newEmployee);
-  //   setNewEmployee({
-  //     id: "",
-  //     name: "",
-  //     email: "",
-  //     contact_no: "",
-  //     department: "",
-  //     city: "",
-  //     state: "",
-  //     DOB: "",
-  //     joining_date: "",
-  //   });
-  //   onClose();
-  // };
-
-  const [selectedState, setSelectedState] = useState('');
-  const [selectedcity, setSelectedcity] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [formValid, setFormValid] = useState(true);
-
   
   const statesData = {
     "AndraPradesh" :["Anantapur","Chittoor","East Godai","Guntur","Kadapa","Krishna","Kurnool","Prakasam","Nellore","Srikakulam","Visakhapatnam","Vizianagaram","West Godai"],
@@ -104,9 +79,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
     setSelectedState(stateValue);
     setSelectedcity('');
 
-    setNewEmployee((prevEmployee) => ({
+    setnewManager((prevEmployee) => ({
       ...prevEmployee,
-      Emp_state:stateValue
+      state:stateValue
     }));
   };
 
@@ -114,9 +89,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
     const cityValue = event.target.value;
     setSelectedcity(cityValue);
 
-    setNewEmployee((prevEmployee) => ({
+    setnewManager((prevEmployee) => ({
       ...prevEmployee,
-      Emp_city:cityValue
+      city:cityValue
     }));
   };
 
@@ -126,29 +101,25 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
     </MenuItem>
   )) : null;
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
 
-  const { onFormSubmit} = useAPI();
-  const onFormSubmit1 = (e) => {
-    onFormSubmit(newEmployee.id,newEmployee);
-    if (!isEmailValid(newEmployee.Emp_email)) {
+
+  const { onFormSubmit21} = useAPI();
+  const onFormSubmit2 = (e) => {
+    onFormSubmit21(newManager.id,newManager);
+    if (!isEmailValid(newManager.email)) {
       alert('Invalid email format');
       return;
     }
     window.location.reload()
-    console.log(newEmployee)
+    console.log(newManager)
+    
   };
-
-  //  Form Validation 
-
   const isEmailValid = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-
+ 
   return (
     <Modal
       open={open}
@@ -167,9 +138,9 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
             <div className="grid-row">
               <div className="grid-item">
                 <TextField
-                  name="Emp_name"
-                  label="Employee Name"
-                  value={newEmployee.Emp_name}
+                  name="name"
+                  label="Name"
+                  value={newManager.name}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -181,36 +152,29 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
             <div className="grid-row">
               <div className="grid-item">
                 <TextField
-                  name="Emp_email"
-                  label="Employee E-mail"
-                  value={newEmployee.Emp_email}
+                  name="email"
+                  label="E-mail"
+                  value={newManager.email}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
                   required
+                  inputProps={{
+                    pattern: '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}',
+                    title: 'Enter a valid email address',
+                  }}
                 />
               </div>
             </div>
             <div className="grid-row">
               <div className="grid-item">
                 <TextField
-                  name="Emp_contact_No"
+                  name="contact_no"
                   label="Contact Number"
                   pattern="[0-9]*"
                    inputmode="numeric"
                    max='10'
-                  value={newEmployee.Emp_contact_No}
-                  onChange={handleInputChange}
-                  fullWidth
-                  margin="normal"
-                  required
-                />
-              </div>
-              <div className="grid-item">
-                <TextField
-                  name="Emp_department"
-                  label="Department"
-                  value={newEmployee.Emp_department}
+                  value={newManager.contact_no}
                   onChange={handleInputChange}
                   fullWidth
                   margin="normal"
@@ -222,17 +186,14 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
              
               <div className="grid-item">
                 <Select 
-                  name="Emp_state"
+                  name="state"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={newEmployee.state}
                   label="State"
                   style={{ color: "black" , marginTop:'15px'}}
                   fullWidth
                   value={selectedState} 
                   onChange={handleStateChange}
-                  
-                  // onChange={handleInputChange}
                 >
                   <MenuItem >Select State</MenuItem>
                     {Object.keys(statesData).map((state)=>(
@@ -241,15 +202,13 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
                 </Select>
               </div>
               <div className="grid-item">
-                <Select                     // facing problem in city select
-                  name="Emp_city"
+                <Select                    
+                  name="city"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={newEmployee.city}
                   label="City"
                   style={{ color: "black" , marginTop:'15px' }}
                   fullWidth
-                  // onChange={handleInputChange}
                   value={selectedcity} 
                   onChange={handlecityChange}
                 >
@@ -259,31 +218,13 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
               </div>
 
             </div>
-            <div className="grid-row mt-3">
-              <div className="grid-item ">
-                <input type="date" placeholder="DD/MM/YYYY" name="Emp_DOB"
-                 value={newEmployee.Emp_DOB} onChange={handleInputChange} required
-                style={{width:'23.25rem',height:'3.3rem',marginTop:'5px',maxWidth:'100%'}}/>
-              </div>
-
-              <div className="grid-item">
-                 <input type="date" placeholder="DD/MM/YYYY" name="Emp_joining_date" required
-                  value={newEmployee.Emp_joining_date} onChange={handleInputChange}
-                 style={{width:'23.25rem',height:'3.3rem',marginTop:'5px',maxWidth:'100%'}}/>
-              </div>
-            </div>
-            {formValid ? null : (
-          <div className="alert">
-            Please fill out all required fields.
-          </div>
-        )}
+        
             <Button
               variant="contained"
               color="primary"
-              onClick={onFormSubmit1}
-              // onAdd={newEmployee}
+              onClick={onFormSubmit2}
             >
-           Add Employee
+           Add managers
             </Button>
           </div>
         </div>
@@ -292,4 +233,7 @@ const AddEmployeeModal = ({ open, onClose, onAdd }) => {
   );
 };
 
-export default AddEmployeeModal;
+export default AddManagers;
+
+
+

@@ -12,32 +12,84 @@ import "../../Table/Table.css";
 import { useState, useEffect } from "react";
 import AddMember from "./Add/AddMember";
 import { UilSearch } from "@iconscout/react-unicons";
-import axios from 'axios'
+import axios from "axios";
+import swal from 'sweetalert';
+
 
 export default function Members() {
   const [rows, setRows] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  // const [post,setPost] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/get')
-    .then(response => {
-      setRows(response.data);
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+    axios
+      .get("http://localhost:8080/get")
+      .then((response) => {
+        setRows(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+
+    // axios.delete(`http://localhost:8080/deleteEmployee/${id}`)
+    // .then(response => {
+    //   setPost(response.data);
+    // })
+    // .catch(error => {
+    //   console.error('Error fetching data:', error);
+    // });
   }, []);
-  
+
+  // const handleDeleteEmployee = (id,e) => {
+    // axios
+    //   .delete(`http://localhost:8080/deleteEmployee/${id}`)
+    //   .then(() => {
+    //     const updatedRows = rows.filter((row) => row._id !== id);
+    //     setRows(updatedRows);
+    //     console.log("Employee deleted");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error deleting employee:", error);
+    //   });
+    // }
+
+    const handleDeleteEmployee = (id) => {
+      swal({
+        title: "Are you sure?",
+        text: "You want to delete this user?",
+        icon: "warning",
+        dangerMode: true,
+      })
+      .then(willDelete => {
+        if (willDelete) {
+          axios.delete(`http://localhost:8080/deleteEmployee/${id}`)
+            .then(res => {
+              const updatedRows = rows.filter((row) => row._id !== id);
+              setRows(updatedRows);
+              swal({
+                title: "Done!",
+                text: "User is deleted",
+                icon: "success",
+                timer: 2000,
+                button: false
+              });
+            })
+            .catch(error => {
+              console.error("Error deleting employee:", error);
+              swal("Error", "An error occurred while deleting the user.", "error");
+            });
+        }
+      });
+    }
+    
+
 
   const handleAddMember = (newEmployee) => {
-    setRows((prevRows) => [...prevRows, newEmployee]);    
+    setRows((prevRows) => [...prevRows, newEmployee]);
   };
 
-
-
-// console.log("rows",rows)
+  // console.log("rows",rows)
   const filteredRows = rows.filter((row) =>
     Object.values(row).some((value) =>
       value.toString().toLowerCase().includes(searchValue.toLowerCase())
@@ -105,6 +157,7 @@ export default function Members() {
                         <TableCell align="left">State</TableCell>
                         <TableCell align="left">DOB</TableCell>
                         <TableCell>Joining Date</TableCell>
+                        <TableCell>Action</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -135,6 +188,15 @@ export default function Members() {
                             <TableCell align="left">{row.Emp_DOB}</TableCell>
                             <TableCell align="left">
                               {row.Emp_joining_date}
+                            </TableCell>
+                            <TableCell align="left" className="d-flex gap-1">
+                              <button className="btn btn-primary">Edit</button>
+                              <button
+                                className="btn btn-danger"
+                                onClick={() => handleDeleteEmployee(row._id)}
+                              >
+                                Delete
+                              </button>
                             </TableCell>
                           </TableRow>
                         );

@@ -40,6 +40,18 @@ export const SidebarData = [
     icon: UilHeadphonesAlt,
     heading: "Complaint",
     path: "/complaint",
+    nestedItems: [
+      {
+        icon: UilChart,
+        heading: "View Complaints",
+        path: "/complaint/contact",
+      },
+      {
+        icon: UilHeadphonesAlt,
+        heading: "Edit Complaints",
+        path: "/complaint/view",
+      },
+    ],
   },
 ];
 export const CardsData = [

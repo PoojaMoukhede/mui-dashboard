@@ -9,6 +9,8 @@ export function APIContextProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [userEmail, setUserEmail] = useState("");
   const [employeeData , setEmployeedata]= useState([]);
+  const [managerData , setManagerdata]= useState([]);
+
 
 
   //Takes email password confirm_password and stores data
@@ -19,6 +21,13 @@ export function APIContextProvider({ children }) {
 
   //add new employees
   const addEmployeeURL = `${URL}add`;
+  // const editEmployeeURL = `${URL}putEmployee/${id}`;
+  // const deleteEmployeeURL = `${URL}deleteEmployee/${id}`;
+
+  const addManagerURL = `${URL}addManager`;
+  // const editManagerURL = `${URL}delete/${id}`;
+  // const deleteManagerURL = `${URL}put/${id}`;
+
 
   //post user
   const signUpUser = (userData) => {
@@ -61,7 +70,7 @@ export function APIContextProvider({ children }) {
   };
 
   
-  const onFormSubmit = (id, data) => {
+  const onFormSubmit = (id, data) => { //emplopyee
     axios
       .post(addEmployeeURL, data)
       .then((res) => {
@@ -85,6 +94,30 @@ export function APIContextProvider({ children }) {
       });
   };
 
+  const onFormSubmit21 = (id, data) => {   //managers
+    axios
+      .post(addManagerURL, data)
+      .then((res) => {
+        const {
+          name,
+          email,
+          contact_no,
+          city,
+          state,
+        } = res.data;
+
+        console.log(name,email,contact_no, city,state);
+        setManagerdata(data)
+      
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+
+
+
 
   return (
     <APIContext.Provider
@@ -95,6 +128,7 @@ export function APIContextProvider({ children }) {
         loginUser,
         userEmail,
         onFormSubmit,
+        onFormSubmit21,
       }}
     >
       {children}

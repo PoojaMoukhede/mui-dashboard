@@ -28,7 +28,7 @@ export default function Sidebar() {
    }
 
   useEffect(() => {
-    const ID = '64d37318603e889b32e3e2e9' // for checking only
+    const ID ='64d37318603e889b32e3e2e9' // for checking only
     handleAdmin(ID)
   }, []);
 
@@ -43,15 +43,13 @@ export default function Sidebar() {
         <div className="adminm">
         <div className="admin">
           <img alt="" src={user} className="user"/>
-          {/* <UilAirplay/> */}
 
         </div>
         {admin ? (
-        <p>Hello, {admin.name}</p>
+        <h3 className="admin_name">Hello, {admin.name}</h3>
        ) : (
         <p>Loading...</p>
       )} 
-          {/* <h3 className="admin_name">Hello Admin</h3> */}
           
         </div>
         <div className="menu">
@@ -69,6 +67,7 @@ export default function Sidebar() {
                 <item.icon />
                 <span>{item.heading}</span>
               </Link>
+              
             );
           })}
           <div className="menu_item"  onClick={() => {

@@ -9,6 +9,7 @@ import Register from "./components/Admin_login/Register";
 import { APIContextProvider } from "./Context";
 import Complaint from "./Pages/Complaint/Complaint";
 import Details from './Pages/Details/Details';
+import ContactManagers from "./Pages/Complaint/ContactManagers";
 
 
 
@@ -31,6 +32,8 @@ function App() {
           <Route exact path="/analysis" element={<Analysis />} />
           <Route exact path="/complaint" element={<Complaint/>}/>
           <Route exact path="/details/:id" element={<Details/>}/>
+          <Route exact path="/contactManager" element={<ContactManagers/>}/>
+
         </Routes>
         </APIContextProvider>
       </BrowserRouter>
