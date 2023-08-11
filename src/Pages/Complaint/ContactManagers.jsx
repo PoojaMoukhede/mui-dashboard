@@ -13,13 +13,19 @@ import axios from 'axios';
 import Sidebar from "../../components/sidebar/Sidebar";
 import AddManagers from "./AddManagers";
 import swal from 'sweetalert';
+import {ExportToExcel} from '../Reports/ReportIndividual/ExportToExcel'
+import { read, utils, writeFile } from 'xlsx';
+import Import from '../../Image/import.png';
+import Add from '../../Image/add.png'
 
 
 
 export default function ContactManagers() {
-    const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingManager, setEditingManager] = useState(null); // Step 1: State for editing
+  const fileName = "ManagerData";
 
   const filteredRows = rows.filter((row) =>
   Object.values(row).some((value) =>
@@ -41,6 +47,7 @@ const handleAddMember = (newEmployee) => {
       console.error('Error fetching data:', error);
     });
   }, []);
+
 
   const handleDeleteManager = (id) => {
     swal({
@@ -72,18 +79,36 @@ const handleAddMember = (newEmployee) => {
   };
 
 
- const handleEditManager=(id)=>{
-  axios.delete(`http://localhost:8080/delete/${id}`)
-  .then(() => {
-    const updatedRows = rows.filter((row) => row._id !== id);
-    setRows(updatedRows);
-    console.log("Manager deleted")
-  })
-  .catch((error) => {
-    console.error('Error deleting manager:', error);
-  });
- }
+  const handleImport = (event) => {
+    const files = event.target.files;
+    if (files.length) {
+        const file = files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const wb = read(event.target.result);
+            const sheets = wb.SheetNames;
 
+            if (sheets.length) {
+                const rows = utils.sheet_to_json(wb.Sheets[sheets[0]]);
+                setRows(rows)
+            }
+        }
+        reader.readAsArrayBuffer(file);
+    }
+}
+
+//  const handleEditManager=(id)=>{
+//   axios.put(`http://localhost:8080/put/${id}`)
+//   .then(() => {
+//     const updatedRows = rows.find((row) => row._id === id); 
+//     setEditingManager(updatedRows);
+//     setIsModalOpen(true);
+//     console.log("Manager data updated")
+//   })
+//   .catch((error) => {
+//     console.error('Error editing manager:', error);
+//   });
+//  }
 
   return (
    <>
@@ -92,14 +117,19 @@ const handleAddMember = (newEmployee) => {
         <Sidebar />
         <div className="main_dashboard2">
           <div className="Table">
+          <h1 style={{ color: "white"}}>Managers</h1>
             <div className="flex_with_search">
             <button
                 onClick={() => setIsModalOpen(true)}
                 className="add_employee"
               >
-                Add Managers
+             <img alt='export' className='icon11' src={Add}/>
               </button>
-              <h1 style={{ color: "white", marginLeft: "40%" }}>Member</h1>
+              <ExportToExcel apiData={rows} fileName={fileName}/>
+              <button className="btn btn-info import"><input type="file" name="file" className="custom-file-input" id="inputGroupFile" required onChange={handleImport}/>
+              <img alt='export' className='icon11' src={Import}/>
+              </button>
+            
               <input
                 type="search"
                 value={searchValue}
@@ -119,11 +149,20 @@ const handleAddMember = (newEmployee) => {
               <span className="icon_search">
                 <UilSearch />
               </span>
-              <AddManagers
+              {/* <AddManagers
               open={isModalOpen}
               onClose={() => setIsModalOpen(false)}
               onAdd={handleAddMember}
-              />
+              /> */}
+              <AddManagers
+        open={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingManager(null); // Clear the editing state when modal is closed
+        }}
+        onAdd={handleAddMember}
+        editingManager={editingManager} // Pass the editing manager data to the modal
+      />
             </div>
             <div style={{ maxHeight: "800px", overflow: "scroll" }}>
               <div>
@@ -166,7 +205,9 @@ const handleAddMember = (newEmployee) => {
                             <TableCell align="left">{row.city}</TableCell>
                             <TableCell align="left">{row.state}</TableCell>
                             <TableCell align="left" className="d-flex gap-1">
-                              <button className="btn btn-primary">Edit</button>
+                              <button className="btn btn-primary"
+                              // onClick={() => handleEditManager(row._id)}
+                              >Edit</button>
                               <button className="btn btn-danger"
                                onClick={() => handleDeleteManager(row._id)}
                               >Delete</button>

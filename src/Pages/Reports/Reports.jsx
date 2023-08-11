@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 
 class Reports extends Component {
+
+
+  
   state = {
     markers: [
       { name: "Pooja", position: { lat: 22.9736889, lng: 72.6298079 } },
@@ -36,6 +39,9 @@ class Reports extends Component {
     });
   };
 
+
+
+  
   render() {
     // const { markers } = this.state;
     // const { markers, activeMarker, showingInfoWindow } = this.state;

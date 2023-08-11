@@ -7,10 +7,22 @@ import locationImg from "../../Image/your-location.png";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import userImg from "../../Image/icons8-user-67 (3).png";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import filteredRows from './MockData.json'
+import {ExportToExcel} from '../Reports/ReportIndividual/ExportToExcel'
+
 
 export default function Details() {
+  const fileName = "VisitingData";
   const { id } = useParams;
   const [employee, setEmployee] = useState(null);
+  const [rows, setRows] = useState([]);
 
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -23,6 +35,7 @@ export default function Details() {
     };
 
     fetchEmployee();
+    setRows(filteredRows);
   }, [id]);
 
   return (
@@ -31,8 +44,13 @@ export default function Details() {
         <div className="glass2">
           <Sidebar />
           <div className="main_dashboard2">
-            <h1>Details</h1>
-
+            <div className="d-flex flex_with_search ms-2">
+            <h1 style={{marginLeft:'40%'}}>Details</h1>
+            <span className="mb-2 ms-auto" >
+              <ExportToExcel apiData={rows} fileName={fileName}/></span>
+           
+          
+            </div>
             <div className="cards detail_card d-flex flex-row">
               <div className="card Dcard">
                 <div style={{ display: "flex" }}>
@@ -86,7 +104,7 @@ export default function Details() {
               </div>
               <div className="card Dcard">
                 <div style={{ display: "flex" }}>
-                  <h4>Visited Place</h4>
+                  <h4>Previous Trip Details</h4>
                   <img
                     src={locationImg}
                     alt=""
@@ -98,8 +116,11 @@ export default function Details() {
               </div>
             </div>
 
-            <h5 className="ms-3">Documents Uploaded</h5>
-            <div id="flex">
+   
+            <h5 className="ms-3">Documents Uploaded</h5>        
+           
+       
+            {/* <div id="flex">
               <div class="item">1</div>
               <div class="item">2</div>
               <div class="item">3</div>
@@ -107,6 +128,55 @@ export default function Details() {
               <div class="item">5</div>
               <div class="item">6</div>
               <div class="item">7</div>
+            </div> */}
+            <div style={{ maxHeight: "800px", overflow: "scroll" }} className="ms-3">
+              <div>
+                <TableContainer
+                  component={Paper}
+                  style={{
+                    boxShadow: "0px 13px 20px 0px #80808029",
+                    backgroundColor: "white",
+                  }}
+                >
+                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Start Point</TableCell>
+                        <TableCell align="left">Destination</TableCell>
+                        <TableCell align="left">Visiting Hours</TableCell>
+                        <TableCell align="left">Kilometer</TableCell>
+                        <TableCell align="left">Travel By</TableCell>
+
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {filteredRows.map((row, index) => {
+                        return (
+                          <TableRow
+                            key={row._id}
+                            sx={{
+                              "&:last-child td, &:last-child th": { border: 0 },
+                              background:
+                                index % 2 === 0 ? "rgb(197, 206, 238)" : "none",
+                            }}
+                          >
+                            <TableCell component="th" scope="row">
+                              {row.Start}
+                            </TableCell>
+                            <TableCell align="left">{row.End}</TableCell>
+                            <TableCell align="left">
+                              {row.hours}
+                            </TableCell>        
+                            <TableCell align="left">{row.km}</TableCell>
+                            <TableCell align="left">{row.vehical}</TableCell>
+
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </div>
             </div>
           </div>
         </div>

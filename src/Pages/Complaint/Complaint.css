@@ -32,3 +32,11 @@
 .complaint{
     font-size:0.8vw;  
 }
+#inputGroupFile{
+    width: 5rem;
+    height: 1.9rem;
+}
+.import{
+    width: 5rem;
+    margin-left: 0.5rem;
+}

@@ -14,6 +14,7 @@ import AddMember from "./Add/AddMember";
 import { UilSearch } from "@iconscout/react-unicons";
 import axios from "axios";
 import swal from 'sweetalert';
+import {ExportToExcel} from '../Reports/ReportIndividual/ExportToExcel'
 
 
 export default function Members() {
@@ -21,6 +22,7 @@ export default function Members() {
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [post,setPost] = useState(null);
+  const fileName = "EmployeeData";
 
   useEffect(() => {
     axios
@@ -109,8 +111,9 @@ export default function Members() {
                 className="add_employee"
               >
                 Add Employee
-              </button>
-              <h1 style={{ color: "white", marginLeft: "40%" }}>Member</h1>
+              </button> 
+              <ExportToExcel apiData={rows} fileName={fileName}/>
+              <h1 style={{ color: "white", marginLeft: "30%" }}>Member</h1>
               <input
                 type="search"
                 value={searchValue}

@@ -1,0 +1,9 @@
+[
+    {"Start":"Multisapn Control Instruments Pvt Ltd","End":"SG Highway","hours":8,"km":42,"vehical":"Bike"},
+    {"Start":"Jasoda Nagar","End":"Gandhi Nagar","hours":10,"km":67,"vehical":"Bus"},
+    {"Start":"Naroda","End":"Narol","hours":8,"km":20,"vehical":"Bike"},
+    {"Start":"Nikol","End":"Rajkot","hours":8,"km":42,"vehical":"Bike"},
+    {"Start":"Isanpur","End":"Vastrapur","hours":7,"km":30,"vehical":"Bike"},
+    {"Start":"Gota","End":"Jasoda Nagar","hours":8,"km":72,"vehical":"Bike"},
+    {"Start":"South Bopal","End":"Odhav","hours":6,"km":36,"vehical":"Bike"}
+]

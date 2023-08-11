@@ -2,7 +2,7 @@ import "./App.css";
 import View from "./View";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Members from "./Pages/Members/Members.jsx";
-import Reports from "./Pages/Reports/Reports.jsx";
+// import Reports from "./Pages/Reports/Reports.jsx";
 import Analysis from "./Pages/Analysis/Analysis.jsx";
 import Login from "./components/Admin_login/Login";
 import Register from "./components/Admin_login/Register";
@@ -10,7 +10,7 @@ import { APIContextProvider } from "./Context";
 import Complaint from "./Pages/Complaint/Complaint";
 import Details from './Pages/Details/Details';
 import ContactManagers from "./Pages/Complaint/ContactManagers";
-
+import Reports from './Pages/Reports/ReportIndividual/Repoprt'
 
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Modal from "@mui/material/Modal";
 import Backdrop from "@mui/material/Backdrop";
 import Fade from "@mui/material/Fade";
@@ -10,10 +10,11 @@ import { useAPI } from '../../Context';
 
 
 
-const AddManagers = ({ open, onClose }) => {
+const AddManagers = ({ open, onClose,editingManager }) => {
 
   const [selectedState, setSelectedState] = useState('');
   const [selectedcity, setSelectedcity] = useState('');
+  // const [editingManager, setEditingManager] = useState(null);
   const [newManager, setnewManager] = useState({
     name: "",
     email: "",
@@ -95,9 +96,9 @@ const AddManagers = ({ open, onClose }) => {
     }));
   };
 
-  const cityOptions = selectedState ? statesData[selectedState].map((Emp_city) => (
-    <MenuItem key={Emp_city} value={Emp_city}>
-      {Emp_city}
+  const cityOptions = selectedState ? statesData[selectedState].map((city) => (
+    <MenuItem key={city} value={city}>
+      {city}
     </MenuItem>
   )) : null;
 
@@ -118,6 +119,19 @@ const AddManagers = ({ open, onClose }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+
+
+
+
+
+  // useEffect((event)=>{
+  //   if (editingManager) {
+  //     // const { name, value } = event.target;
+  //     setnewManager(newManager);
+  //     setSelectedcity(editingManager.city);
+  //     setSelectedState(editingManager.state);
+  //   }
+  // }, [])
 
  
   return (
