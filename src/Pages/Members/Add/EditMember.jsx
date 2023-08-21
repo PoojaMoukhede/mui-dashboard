@@ -9,15 +9,14 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useAPI } from "../../../Context";
 
-const AddEmployeeModal = ({
+const EditMember = ({
   open,
-  onClose,
+  onClose,                                                    
   onAction,
   isEditing,
   initialEmployee,
 }) => {
   const [newEmployee, setNewEmployee] = useState({
-    // id: Date.now(),
     Emp_name: "",
     Emp_email: "",
     Emp_contact_No: "",
@@ -36,21 +35,6 @@ const AddEmployeeModal = ({
     }));
   };
 
-  // const handleAddClick = () => {
-  //   onAdd(newEmployee);
-  //   setNewEmployee({
-  //     id: "",
-  //     name: "",
-  //     email: "",
-  //     contact_no: "",
-  //     department: "",
-  //     city: "",
-  //     state: "",
-  //     DOB: "",
-  //     joining_date: "",
-  //   });
-  //   onClose();
-  // };
 
   const [selectedState, setSelectedState] = useState("");
   const [selectedcity, setSelectedcity] = useState("");
@@ -865,21 +849,22 @@ const AddEmployeeModal = ({
     setSelectedDate(date);
   };
 
-  const { onFormSubmit } = useAPI();
-  const onFormSubmit1 = (e) => {
-    onFormSubmit(newEmployee.id, newEmployee);
-    if (!isEmailValid(newEmployee.Emp_email)) {
-      alert("Invalid email format");
-      return;
-    }
-    window.location.reload();
-    console.log(newEmployee);
+  const { onFormSubmitEdit } = useAPI();
+  const onFormSubmit1 = () => {
+    onFormSubmitEdit(newEmployee._id, newEmployee);
+    // if (!isEmailValid(newEmployee.Emp_email)) {
+    //   alert("Invalid email format");
+    //   return;
+    // }
+    console.log(newEmployee)
+    // window.location.reload();
   };
 
-  const isEmailValid = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+//   const isEmailValid = (email) => {
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     return emailRegex.test(email);
+//   };
+
 
   return (
     <Modal
@@ -893,7 +878,7 @@ const AddEmployeeModal = ({
     >
       <Fade in={open}>
         <div className="modal-container">
-          <h2>Add New Employee</h2>
+          <h2>Edit Employee</h2>
           <div className="grid-container">
             <div className="grid-row">
               <div className="grid-item">
@@ -955,14 +940,12 @@ const AddEmployeeModal = ({
                   name="Emp_state"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={newEmployee.state}
+
                   label="State"
                   style={{ color: "black", marginTop: "15px" }}
                   fullWidth
                   value={selectedState}
                   onChange={handleStateChange}
-
-                  // onChange={handleInputChange}
                 >
                   <MenuItem>Select</MenuItem>
                   {Object.keys(statesData).map((state) => (
@@ -977,11 +960,9 @@ const AddEmployeeModal = ({
                   name="Emp_city"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={newEmployee.city}
                   label="City"
                   style={{ color: "black", marginTop: "15px" }}
                   fullWidth
-                  // onChange={handleInputChange}
                   value={selectedcity}
                   onChange={handlecityChange}
                 >
@@ -1034,10 +1015,8 @@ const AddEmployeeModal = ({
               variant="contained"
               color="primary"
               onClick={onFormSubmit1}
-              // onAdd={newEmployee}
             >
-              {isEditing ? "Update Employee" : "Add Employee"}
-              {/* Add Employee */}
+              Edit Employee
             </Button>
           </div>
         </div>
@@ -1046,4 +1025,4 @@ const AddEmployeeModal = ({
   );
 };
 
-export default AddEmployeeModal;
+export default EditMember;

@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import "../../Table/Table.css";
 import { useState, useEffect } from "react";
 import AddMember from "./Add/AddMember";
+import EditMember from "./Add/EditMember";
 import { UilSearch } from "@iconscout/react-unicons";
 import axios from "axios";
 import swal from 'sweetalert';
@@ -21,7 +22,10 @@ export default function Members() {
   const [rows, setRows] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenEdit, setIsModalOpenEdit] = useState(false);
+
   // const [post,setPost] = useState(null);
+  // const [editingEmployee, setEditingEmployee] = useState(null);
   const fileName = "EmployeeData";
 
   useEffect(() => {
@@ -34,28 +38,7 @@ export default function Members() {
         console.error("Error fetching data:", error);
       });
 
-    // axios.delete(`http://localhost:8080/deleteEmployee/${id}`)
-    // .then(response => {
-    //   setPost(response.data);
-    // })
-    // .catch(error => {
-    //   console.error('Error fetching data:', error);
-    // });
   }, []);
-
-  // const handleDeleteEmployee = (id,e) => {
-    // axios
-    //   .delete(`http://localhost:8080/deleteEmployee/${id}`)
-    //   .then(() => {
-    //     const updatedRows = rows.filter((row) => row._id !== id);
-    //     setRows(updatedRows);
-    //     console.log("Employee deleted");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error deleting employee:", error);
-    //   });
-    // }
-
     const handleDeleteEmployee = (id) => {
       swal({
         title: "Are you sure?",
@@ -90,7 +73,10 @@ export default function Members() {
   const handleAddMember = (newEmployee) => {
     setRows((prevRows) => [...prevRows, newEmployee]);
   };
-
+const EditMemberhandle =(newEmployee) =>{
+  setRows(newEmployee)
+  // setRows((prevRows) => [...prevRows, newEmployee]);
+}
   // console.log("rows",rows)
   const filteredRows = rows.filter((row) =>
     Object.values(row).some((value) =>
@@ -193,7 +179,10 @@ export default function Members() {
                               {row.Emp_joining_date}
                             </TableCell>
                             <TableCell align="left" className="d-flex gap-1">
-                              <button className="btn btn-primary">Edit</button>
+                              <button className="btn btn-primary"
+                              onClick={()=> setIsModalOpenEdit(true)}
+                              >Edit</button>
+                              
                               <button
                                 className="btn btn-danger"
                                 onClick={() => handleDeleteEmployee(row._id)}
@@ -212,6 +201,11 @@ export default function Members() {
           </div>
         </div>
       </div>
+      <EditMember
+                open={isModalOpenEdit}
+                onClose={() =>setIsModalOpenEdit(false)}
+                isEditing={EditMemberhandle}
+              />
     </div>
   );
 }

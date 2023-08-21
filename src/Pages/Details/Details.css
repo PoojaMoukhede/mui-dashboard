@@ -10,6 +10,7 @@
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+  flex-wrap: wrap;
 }
 .item {
   width: 23.5rem;
@@ -20,4 +21,20 @@
   color: black;
   text-align: center;
   font-size: 2rem;
+}
+@media screen and (max-width: 1200px) {
+  .detail_card{
+     flex-direction: column;
+  }
+  .detail_container{
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width:786px) {
+  .table_details{
+    max-width: 30rem;
+  }
+  .Dcard{
+     max-width: 30rem;
+  }
 }

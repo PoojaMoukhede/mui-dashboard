@@ -9,6 +9,7 @@
 @media screen and (max-width: 1200px) {
     .Cards{
       flex-direction: column;
+      flex-wrap: wrap;
     }
     .parentContainer{
       height: 9rem;
@@ -19,5 +20,6 @@
   {
     .Cards{
       width: 90%;
+      flex-wrap: wrap;
     }
   }

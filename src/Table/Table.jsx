@@ -63,13 +63,13 @@ export default function BasicTable() {
         color="secondary"
         focused
       /> */}
-      <div className="flex_with_search">
+      <div className="flex_with_search table_view">
         <h1 style={{ color: "white",marginLeft:'45%' }}>Member</h1>
         
         <input
           type="search"
           value={searchValue}
-          className="form-input"
+          className="form-input member_input"
           style={{
             // margin: "10px",
             marginLeft:'auto',

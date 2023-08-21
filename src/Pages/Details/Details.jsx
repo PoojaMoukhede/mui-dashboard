@@ -43,7 +43,7 @@ export default function Details() {
       <div className="App">
         <div className="glass2">
           <Sidebar />
-          <div className="main_dashboard2">
+          <div className="main_dashboard2 detail_container">
             <div className="d-flex flex_with_search ms-2">
             <h1 style={{marginLeft:'40%'}}>Details</h1>
             <span className="mb-2 ms-auto" >
@@ -51,7 +51,7 @@ export default function Details() {
            
           
             </div>
-            <div className="cards detail_card d-flex flex-row">
+            <div className="cards detail_card d-flex ">
               <div className="card Dcard">
                 <div style={{ display: "flex" }}>
                   <h4>Employee Detail</h4>
@@ -129,7 +129,7 @@ export default function Details() {
               <div class="item">6</div>
               <div class="item">7</div>
             </div> */}
-            <div style={{ maxHeight: "800px", overflow: "scroll" }} className="ms-3">
+            <div style={{ maxHeight: "800px", overflow: "scroll" }} className="ms-3 table_details">
               <div>
                 <TableContainer
                   component={Paper}

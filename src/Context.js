@@ -115,9 +115,35 @@ export function APIContextProvider({ children }) {
       });
   };
 
-
-
-
+  // const onFormSubmitEdit = async(id, data) => { //emplopyee `${URL}putEmployee/${id}`
+  //   console.log(" onformsubmitedit inside")
+  //  await axios           
+  //     .put(`http://localhost:8080/putEmployee/64e30533d1c3cd0aaf6a6aae`)
+  //     console.log("-------------")
+  //     .then((res) => {
+  //       const info = res.data;
+  //       console.log(`info ${info}`);
+  //       setEmployeedata(data)
+  //       console.log(`id while fetching ${id}`)
+      
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // };
+  const onFormSubmitEdit = async (id, data) => {
+    console.log("onFormSubmitEdit inside");
+    
+    try {
+      const response = await axios.put(`http://localhost:8080/putEmployee/${id}`, data);
+      const info = response.data;
+      console.log(`info ${info}`);
+      setEmployeedata(data);
+      console.log(`id while fetching ${id}`);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <APIContext.Provider
@@ -129,6 +155,7 @@ export function APIContextProvider({ children }) {
         userEmail,
         onFormSubmit,
         onFormSubmit21,
+        onFormSubmitEdit,
       }}
     >
       {children}

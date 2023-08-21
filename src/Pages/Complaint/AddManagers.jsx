@@ -121,9 +121,6 @@ const AddManagers = ({ open, onClose,editingManager }) => {
   };
 
 
-
-
-
   // useEffect((event)=>{
   //   if (editingManager) {
   //     // const { name, value } = event.target;

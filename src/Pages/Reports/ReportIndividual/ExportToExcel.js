@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
-import Emport from '../../../Image/export.png';
 // import '../Reports.css'
-
 
 export const ExportToExcel = ({ apiData, fileName }) => {
   const fileType =
@@ -19,8 +17,11 @@ export const ExportToExcel = ({ apiData, fileName }) => {
   };
 
   return (
-    <button onClick={(e) => exportToCSV(apiData, fileName)} className='btn btn-secondary' style={{padding:'0.5rem', marginLeft:'0.45rem'}}>
-      <img alt='export' className='icon11' src={Emport}/>
+    <button
+      onClick={(e) => exportToCSV(apiData, fileName)}
+      className="btn"
+      style={{ padding: "0.35rem", marginLeft: "0.5rem", color: "white" ,backgroundColor:"#00bcbe"}}
+    > Export
     </button>
   );
 };

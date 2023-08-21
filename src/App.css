@@ -12,12 +12,14 @@
 .App {
   font-family: "Inter", sans-serif;
   background-color: rgb(35, 38, 69);
-  height: 100vh;
+  height: 100vh;    /*  if i remove this then it will occupie only content height and looks correct*/
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: auto;
   
 }
 
@@ -32,16 +34,34 @@
 @media screen and (max-width: 1200px) {
   .glass {
     grid-template-columns: 10% 50% auto;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    overflow: auto;
   }
 }
 
 @media screen and (max-width: 768px) {
   .glass {
     grid-template-columns: 1fr;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    overflow: scroll;
   }
 }
+@media screen and (max-width: 510px) {
+ .table_view{
+  flex-wrap: wrap;
+  flex-direction: column;
+ }
+ .icon_search{
+  display: none;
+ }
+ .member_input{
+  width: 400px !important;
+ }
+ .table_view >h1{
+ margin-left: -1% !important;
+ }
+}
+
 h1{
   color: white;
   text-align: center;

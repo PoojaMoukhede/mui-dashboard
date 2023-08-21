@@ -1,6 +1,7 @@
 .sidebar {
   color: white;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   position: relative;
   /* padding-top: 2rem; */
@@ -14,12 +15,14 @@
   color: white;
   margin-top: 1rem;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   gap: 2rem;
 }
 .menu_item {
   color: white;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
   height: 2.5rem;
@@ -92,6 +95,12 @@
  
 }
 @media screen and (max-width: 568px) {
+  .admin , .admin_name{
+    display: none;
+  }
+  .menu_item{
+    margin-left: 0;
+  }
   .menu_item>span{
     display: none;
   }
@@ -101,7 +110,7 @@
   .sidebar{
     position: fixed;
     z-index: 9;
-    background: #ffe0e0;
+    background: #2a2f4b;
     width: 10%;
     /* padding-right: 1rem; */
     height: 100%;
