@@ -66,7 +66,7 @@ export default function Login() {
                                 <i className="bi bi-lock-fill"></i>
                               </div>
                               <input
-                                type="text"
+                                type="password"
                                 className="form-control"
                                 placeholder="Enter Password"
                                 onChange={(e) => handleChange(e)}

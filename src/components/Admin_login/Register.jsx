@@ -56,7 +56,7 @@ export default function Register() {
                                                 <label>Password<span className="text-danger">*</span></label>
                                                 <div className="input-group">
                                                     <div className="input-group-text"><i className="bi bi-lock-fill"></i></div>
-                                                    <input type="text" className="form-control" placeholder="Enter Password" onChange={(e) => handleChange(e)} name='password'/>
+                                                    <input type="password" className="form-control" placeholder="Enter Password" onChange={(e) => handleChange(e)} name='password'/>
                                                 </div>
                                             </div>
 
@@ -64,7 +64,7 @@ export default function Register() {
                                                 <label>Confirm Password<span className="text-danger">*</span></label>
                                                 <div className="input-group">
                                                     <div className="input-group-text"><i className="bi bi-lock-fill"></i></div>
-                                                    <input type="text" className="form-control" placeholder="Re-Enter Password"  onChange={(e) => handleChange(e)} name='confirm_password'/>
+                                                    <input type="password" className="form-control" placeholder="Re-Enter Password"  onChange={(e) => handleChange(e)} name='confirm_password'/>
                                                 </div>
                                             </div>
 
