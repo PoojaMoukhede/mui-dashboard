@@ -3,7 +3,9 @@ import "./Login.css";
 import loginImg2 from "../../Image/bro.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useAPI } from "../../../src/Context";
-import logo from "../../Image/logo.png";
+// import logo from "../../Image/logo.jpg";
+import logo from "../../Image/multispan-logo 2.png";
+
 
 export default function Login() {
   const { loginUser } = useAPI();
@@ -27,7 +29,7 @@ export default function Login() {
           <div className="container">
             <div className="row">
               <div className="col-lg-10 offset-lg-1">
-                <h3 className="mb-3 text-light">Login Now</h3>
+                <h3 className="mb-3 text-blue">Login Now</h3>
                 <div className="bg-white shadow rounded">
                   <div className="row">
                     <div className="col-md-7 pe-0">
@@ -98,13 +100,13 @@ export default function Login() {
                           <div className="col-12">
                             <button
                               type="submit"
-                              className="btn btn-primary px-5 float-end mt-4"
+                              className="btn btn_primary px-5 float-end mt-4"
                               onClick={UserLogin}
                             >
                               Login
                             </button>
                             <Link id="signup" to="/register">
-                              <button className="btn btn-primary px-5 float-start mt-4">
+                              <button className="btn btn_primary px-5 float-start mt-4">
                                 Sign Up
                               </button>
                             </Link>

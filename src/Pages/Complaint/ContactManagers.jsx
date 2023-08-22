@@ -78,22 +78,28 @@ export default function ContactManagers() {
   };
 
   const handleImport = (event) => {
-    console.log("Inside hangle Import function")
-    const files = event.target.files;
-    if (files.length) {
-      const file = files[0];
-      console.log(`file is ${file}`)
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const wb = read(event.target.result);
-        const sheets = wb.SheetNames;
+    console.log("Inside hangle Import function");
+    try {
+      const files = event.target.files;
+      console.log("File name :", files);
+      if (files.length) {
+        const file = files[0];
+        console.log(`file is ${file}`);
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          console.log("file loaded");
+          const wb = read(event.target.result);
+          const sheets = wb.SheetNames;
 
-        if (sheets.length) {
-          const rows = utils.sheet_to_json(wb.Sheets[sheets[0]]);
-          setRows(rows);
-        }
-      };
-      reader.readAsArrayBuffer(file);
+          if (sheets.length) {
+            const rows = utils.sheet_to_json(wb.Sheets[sheets[0]]);
+            setRows(rows);
+          }
+        };
+        reader.readAsArrayBuffer(file);
+      }
+    } catch (error) {
+      console.log("error in ", error);
     }
   };
 
@@ -142,7 +148,8 @@ export default function ContactManagers() {
                     height: "2.5rem",
                     color: "white",
                     fontSize: "15px",
-                    backgroundColor: "rgb(35, 38, 69)",
+                    backgroundColor: "#05385a",
+                    // backgroundColor: "rgb(35, 38, 69)",
                     border: "1px solid gray",
                     borderRadius: "5px",
                   }}

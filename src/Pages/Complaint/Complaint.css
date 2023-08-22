@@ -8,18 +8,18 @@
   width: 15rem;
   padding-top: 1rem;
   height: 100%;
-  background-color: rgb(130, 155, 236);
+  background-color: #c8ebff;
 }
 .complaint_right {
   width: 85rem;
 }
 .employee_name {
-  color: rgb(255, 255, 255);
+   color: #05385a;
   font-size: 1rem;
   font-weight: 600;
 }
 .employee_date {
-  color: white;
+  color: #05385a;
   /* font-size:1.5rem; */
   font-size: 1.3vw;
   font-weight: 500;
@@ -27,7 +27,7 @@
 .icon_dark {
   font-size: 1.5rem;
   /* font-size:4vw; */
-  color: rgb(255, 255, 255);
+   color: #05385a;
 }
 .complaint {
   font-size: 0.8vw;
@@ -99,4 +99,7 @@ input[type="file"] {
   .complain_header {
     flex-direction: row;
   }
+}
+.btn_info{
+  background-color: #fca61f;
 }

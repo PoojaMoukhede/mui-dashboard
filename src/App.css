@@ -11,7 +11,8 @@
 }
 .App {
   font-family: "Inter", sans-serif;
-  background-color: rgb(35, 38, 69);
+  /* background-color: rgb(35, 38, 69); */
+  background-color: #05385a;
   height: 100vh;    /*  if i remove this then it will occupie only content height and looks correct*/
   display: flex;
   flex-wrap: wrap;
@@ -68,4 +69,60 @@ h1{
 }
 .icon11{
   width: 2rem;
+}
+.landingpage{
+  width: 100%;
+  height: 100vh;
+  background-color:#c8ebff;
+  display: flex;
+  flex-direction: row;
+}
+.rightL , .leftL{
+width: 50%;
+}
+.map{
+  margin-top: -5.5%;
+  width: 100%;
+}
+.title{
+  color: #05385a;
+  font-size: 4rem;
+  text-align: left;
+  padding-left: 10rem;
+  padding-top: 10rem;
+  padding-bottom: 3rem;
+  font-weight: 700;
+}
+.pdesc{
+  padding-left: 10rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #05385a;
+}
+.button{
+  background-color: #fca61f;
+  border: none;
+  padding: 1rem;
+  font-weight: 700;
+  color: #05385a;
+  border-radius: 0.7rem;
+  margin-left: 10rem;
+  margin-top: 2rem;
+  width: 12rem;
+}
+.btn_primary{
+  background-color: #fca61f;
+  border: none;
+  padding: 1rem;
+  font-weight: 700;
+  color: #05385a;
+  border-radius: 0.7rem;
+}
+.btn_primary1{
+  background-color: #fca61f;
+  border: none;
+  padding: 0.7rem;
+  font-weight: 700;
+  color: #05385a;
+  border-radius: 0.7rem;
 }

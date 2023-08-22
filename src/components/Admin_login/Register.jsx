@@ -3,7 +3,7 @@ import './Login.css'
 import loginImg from '../../Image/amico.png'
 import { useAPI } from '../../Context'
 import { useNavigate } from 'react-router-dom'
-import logo from "../../Image/logo.png";
+import logo from "../../Image/multispan-logo 2.png";
 
 
 
@@ -29,7 +29,7 @@ export default function Register() {
         <div className="container">
             <div className="row">
                 <div className="col-lg-10 offset-lg-1">
-                  <h3 className="mb-3 text-light">Register Here</h3>
+                  <h3 className="mb-3 text-blue">Register Here</h3>
                     <div className="bg-white shadow rounded">
                         <div className="row">
                             <div className="col-md-7 pe-0">
@@ -69,8 +69,8 @@ export default function Register() {
                                             </div>
 
                                             <div className="col-12">
-                                                <button type="submit" className="btn btn-primary px-5 float-end mt-4" onClick={UserLogin}>Register</button>
-                                                <button className="btn btn-primary px-5 float-start mt-4" onClick={() => navigate("/")}>Sign In</button>
+                                                <button type="submit" className="btn btn_primary px-5 float-end mt-4" onClick={UserLogin}>Register</button>
+                                                <button className="btn btn_primary px-5 float-start mt-4" onClick={() => navigate("/login")}>Sign In</button>
                                             </div>
                                             
                                     </form>

@@ -183,7 +183,7 @@ const AddManagers = ({ open, onClose,editingManager }) => {
                   name="contact_no"
                   label="Contact Number"
                   pattern="[0-9]*"
-                   inputmode="numeric"
+                   inputMode="numeric"
                    max='10'
                   value={newManager.contact_no}
                   onChange={handleInputChange}

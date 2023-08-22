@@ -4,16 +4,19 @@ import Logo from "../../Image/logo.png";
 import { UilSignOutAlt } from "@iconscout/react-unicons";
 import { SidebarData } from "../../Data/Data";
 import { Link } from "react-router-dom";
-import user from '../../Image/user (3).png'
+// import user from '../../Image/user (3).png'
+import user from '../../Image//icons8-user-64 (2).png'
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from 'axios'
+// import { useHistory } from "react-router-dom"; 
 // import { UilAirplay } from '@iconscout/react-unicons'
-
+let style = {color:'#fca61f'}
 export default function Sidebar() {
   const [selected, setSelected] = useState(null);
   const [admin,setAdmin] = useState('')
   const navigate = useNavigate();
+  // const history = useHistory();
 
 
    function handleAdmin(id){
@@ -27,12 +30,31 @@ export default function Sidebar() {
     });
    }
 
+  // useEffect(() => {
+  //   const ID ='64d37318603e889b32e3e2e9' // for checking only
+  //   handleAdmin(ID)
+  //   // handleLogout()
+  // }, []);
+
   useEffect(() => {
     const ID ='64d37318603e889b32e3e2e9' // for checking only
     handleAdmin(ID)
+    // handleLogout()
   }, []);
+function handleLogout(){
+    // e.preventDefault();
+    localStorage.removeItem("token");
+    sessionStorage.clear()
+    localStorage.clear()
+    window.location.replace('/login');
+    navigate("/");
 
 
+    // localStorage.removeItem("token");
+    // sessionStorage.clear();
+    // localStorage.clear();
+    // window.history.replaceState({}, "", "/");
+}
 
   return (
     <>
@@ -64,18 +86,14 @@ export default function Sidebar() {
                 onClick={() => setSelected(index)}
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <item.icon />
+                 <item.icon style={style}/>
                 <span>{item.heading}</span>
               </Link>
               
             );
           })}
-          <div className="menu_item"  onClick={() => {
-            navigate("/");
-            localStorage.clear("token");
-            window.location.reload();
-          }}>
-            <UilSignOutAlt />
+          <div className="menu_item"  onClick={() => handleLogout()}>
+          <UilSignOutAlt style={style}/>
             <span>Logout</span>
           </div>
         </div>

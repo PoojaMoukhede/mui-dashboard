@@ -37,7 +37,7 @@ export function APIContextProvider({ children }) {
         .post(SignUpUrl, userData)
         .then((res) => {
           // console.log(res);
-          navigate("/");
+          navigate("/login");
         })
         .catch((err) => {
           console.log(err);

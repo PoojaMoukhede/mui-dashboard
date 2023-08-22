@@ -11,6 +11,7 @@ import Complaint from "./Pages/Complaint/Complaint";
 import Details from './Pages/Details/Details';
 import ContactManagers from "./Pages/Complaint/ContactManagers";
 import Reports from './Pages/Reports/ReportIndividual/Repoprt'
+import LandingPage from "./Pages/LandingPage";
 
 
 
@@ -20,7 +21,8 @@ function App() {
       <BrowserRouter>
       <APIContextProvider>
         <Routes>
-        <Route exact path="/" element={<Login />} />
+        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
           <Route exact path="/dashboard" element={
            localStorage.getItem("token") ? (

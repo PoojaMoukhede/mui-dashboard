@@ -16,7 +16,7 @@ export default function Complaint() {
             <div className="mt-2 d-flex flex-column complain_header">
               <h1>Complaint</h1>
               <Link to="/contactManager">
-                <button className="btn btn-info float-end mb-2">
+              <button className="btn btn_info float-end mb-2">
                   View Contact
                 </button>
               </Link>

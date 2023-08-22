@@ -15,7 +15,8 @@
   flex-direction: column;
 }
 .odd-cell-bg {
-  background-color: rgb(130, 155, 236);
+  /* background-color: rgb(130, 155, 236); */
+  background-color: #c8ebff;
 }
 /* .MuiTableRow-root {
   background-color: rgb(197, 206, 238);
@@ -43,7 +44,8 @@
   /* margin-left: 0.6rem; */
 }
 .icon_search{
-  background-color: rgb(17, 127, 223);
+  /* background-color: rgb(17, 127, 223); */
+  background-color: #0b5ed7;
   padding: 0.5rem;
   border-radius: 5px;
 }

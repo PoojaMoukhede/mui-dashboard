@@ -46,6 +46,7 @@ export default function Members() {
         icon: "warning",
         dangerMode: true,
       })
+      console.log(`id in delete ${id}`)
       .then(willDelete => {
         if (willDelete) {
           axios.delete(`http://localhost:8080/deleteEmployee/${id}`)
@@ -94,7 +95,7 @@ const EditMemberhandle =(newEmployee) =>{
             <div className="flex_with_search">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="add_employee"
+                className="btn btn-primary"
               >
                 Add Employee
               </button> 
@@ -110,7 +111,8 @@ const EditMemberhandle =(newEmployee) =>{
                   height: "2.5rem",
                   color: "white",
                   fontSize: "15px",
-                  backgroundColor: "rgb(35, 38, 69)",
+                  // backgroundColor: "rgb(35, 38, 69)",
+                  backgroundColor: "#05385a",
                   border: "1px solid gray",
                   borderRadius: "5px",
                 }}
@@ -158,7 +160,8 @@ const EditMemberhandle =(newEmployee) =>{
                             sx={{
                               "&:last-child td, &:last-child th": { border: 0 },
                               background:
-                                index % 2 === 0 ? "rgb(197, 206, 238)" : "none",
+                              index % 2 === 0 ? "#c8ebff" : "none",
+                                // index % 2 === 0 ? "rgb(197, 206, 238)" : "none",
                             }}
                           >
                             <TableCell align="left">{row._id}</TableCell>

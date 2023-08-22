@@ -17,13 +17,17 @@ a {
     color: black;
 }
 .bg_image_login{
-    background-color: #3b5e6e;
+    background-color: #05385a;
 }
 .login_container{
-    background-color: #1A4A60;
+    background-color: #c8ebff;
 }
 .m_logo{
     margin-top:2%!important ;
     margin-left: 2%;
     position: fixed;
+    width: 15rem;
+}
+.text-blue{
+    color: #05385a;
 }
